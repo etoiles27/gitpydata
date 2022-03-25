@@ -83,6 +83,7 @@ def stuModify(stuSave):
                 modiScore = int(input("수정할 점수를 입력해주세요 >> "))
                 stu.setKor(modiScore)
                 #Student.setKor(stu,modiScore) # 클래스 내 setKor 함수를 호출해서 국어점수를 수정
+                
             elif modiNum == 2: # 영어성적 수정
                 print('영어성적 수정을 선택하셨습니다. ')
                 # 현재 영어성적 출력
@@ -91,7 +92,7 @@ def stuModify(stuSave):
                 Student.setEng(stu,modiScore) # 클래스 내 setEng 함수를 호출해서 국어점수를 수정
             elif modiNum == 0: # 상위메뉴로 이동
                 break
-   
+            
             break
     if scnt == 0:
         print('{}학생이 존재하지 않습니다. '.format(modiName))
@@ -106,9 +107,13 @@ def stuDel(stuSave):
         # 만약에 stuSave[i]번째 클래스의 .stuname이 입력갑과 같을 경우
         if delName in stuSave[i].stuname:
             dcnt = 1 # 학생이 존재
-            del(stuSave[i]) # 학생클래스를 리스트로부터 삭제한다. 
-            print('{} 학생 정보가 삭제되었습니다.'.format(delName))
-            break
+            flg = input('정말 삭제하시겠습니까 ? (Y OR N)')
+            if flg == 'y' or flg =="Y":
+                del(stuSave[i]) # 학생클래스를 리스트로부터 삭제한다. 
+                print('{} 학생 정보가 삭제되었습니다.'.format(delName))
+                break
+            else:
+                print("삭제가 취소되었습니다.")
     if dcnt == 0: # 학생이 존재하지 않으면
          print('{}학생이 존재하지 않습니다. '.format(delName))
          
@@ -118,7 +123,7 @@ def stuRank(stuSave):
         rcount = 1 # 등수를 카운트
         for stu2 in stuSave:
             # 학생 클래스에서 총점을 가져오는 함수를 사용해서 각각 비교 
-            if stu1.getTotal() < stu2.getTotal():  
+            if stu1 < stu2:  # 클래스 __lt__함수 호출
                 rcount += 1 
         # 등수카운트가 끝나면 학생 클래스 내 setRank 함수를 통해서 rank값을 저장         
         stu1.setRank(rcount)

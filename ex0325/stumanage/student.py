@@ -1,5 +1,3 @@
-#from subprocess import STARTUPINFO
-
 
 class Student:
     stuno = 0
@@ -59,23 +57,6 @@ class Student:
     def __str__(self):
         return '{}\t{}\t{}\t{}\t{}\t{}\t{}\t'.format(self.stuno,self.stuname,self.kor,self.eng,self.total,self.avg,self.rank)
     
-        
-        
-    # def getKor(self):
-    #     return self.__kor
-    # def setKor(self, kor):
-    #     if kor>=0:
-    #         self.__kor = kor
-    #     else:
-    #         print('입력이 잘못됬습니다. ')
-    #         # try:
-    #         #     raise Exception('입력이 잘못됨')
-    #         # except:
-    #         #     pass
-    # def getEng(self):
-    #     return self.__eng
-    # def setEng(self, eng):
-    #     if eng>=0:
-    #         self.__eng = eng
-    #     else:
-    #         print('입력이 잘못됬습니다. ')
+    # self less than other -> 맞으면 true, 틀리면 false 리턴 
+    def __lt__(self, other):
+        return self.total < other.total

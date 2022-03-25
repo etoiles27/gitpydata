@@ -22,6 +22,7 @@ while True:
     elif choice == 6 : # 6. 학생등수처리
         stuRank(stuSave)
     elif choice == 0 : #0. 프로그램종료
+        print('프로그램을 종료합니다. ')
         break
     else:
         pass
