@@ -22,15 +22,23 @@ lotto6 = []
 uInput = []
 numuInput=[]
 matnum = []
+# 입력수가 10 보다 큰 경우 다시 입력받는다. 
+lottocnt=0
+while True:
+    lottocnt = int(input("원하는 개수의 로또를 입력해주세요 (1-10) >> "))
+    if lottocnt>10 :
+        print('다시 입력하세요')
+    else:
+        break
 
-lottocnt = int(input("원하는 개수의 로또를 입력해주세요 (1-10) >> "))
-
+# 로또 넘버 생성
 for i in range(500):
     n = randint(0,44)
     lottoNumber[0],lottoNumber[n] = lottoNumber[n],lottoNumber[0] 
 
 lotto6=lottoNumber[:6]
 
+# lottocnt 만틈의 로또번호를 입력받는다. 
 for k in range(lottocnt):
     print('[{}번째 로또]'.format(k+1))
     for i in range(6):
@@ -39,9 +47,10 @@ for k in range(lottocnt):
     numuInput.append(uInput)
     uInput=[]
 
+# 각각의 로또 번호를 [[],[],...] 형식으로 받는다. 
 
 
-
+# 당첨번호와 비교 
 for k in range(lottocnt):
     uInput = numuInput[k]
     for i in lotto6:
