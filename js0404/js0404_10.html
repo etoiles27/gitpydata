@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            let i = 1;
+            let str1 = ''
+            $('#btn1').click(function(){
+                i--;
+                if (i<1){
+                    i = 5
+                }
+                str1 = '<img src="./images/so'+i+'.jpg">';
+                $('#img').html(str1);
+
+            })
+            $('#btn2').click(function(){
+                i++;
+                if(i>5){
+                    i=1
+                }
+                str1 = '<img src="./images/so'+i+'.jpg">';
+                $('#img').html(str1);
+
+            })
+
+
+        });
+
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        #img{width: 500px; height: 400px; border: 1px solid black; overflow: hidden;
+            margin: 0 auto; margin-top: 50px;}
+        #btn0{width: 150px; margin: 0 auto;}
+
+    </style>
+</head>
+<body>
+    <div id="img"><img src="./images/so1.jpg"></div>
+    <div id="btn0">
+        <button id="btn1">◀이전</button>  
+        <button id="btn2">다음▶</button>
+    </div>
+    
+</body>
+</html>

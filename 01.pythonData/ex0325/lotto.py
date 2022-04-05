@@ -49,6 +49,7 @@ for k in range(lottocnt):
 
 # 각각의 로또 번호를 [[],[],...] 형식으로 받는다. 
 
+reward = ['0','0','1만원','100만','1000만','1억','10억']
 
 # 당첨번호와 비교 
 for k in range(lottocnt):
@@ -62,3 +63,5 @@ for k in range(lottocnt):
     print('로또당첨번호 : {}'.format(lotto6))
     print('로또입력번호 : {}'.format(uInput))
     print('당첨확인번호 : {} ({}개)'.format(matnum,len(matnum)))
+    print('당첨금액 : {} 원'.format(reward[len(matnum)]))
+    

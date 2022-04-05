@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Document</title>
+    <script>
+        // document.getElementById('txt').innerHTML='<h2>한글</h2>'
+        
+        // jquery선언. 
+        $(function(){
+            //$('#txt').html('<h2>한글</h2>');
+            $('.saveBtn').click(function(){
+                //alert('함수호출')
+
+            })
+
+        });
+        function sBtn(){
+            alert('자바스크립트 버튼클릭')
+            $('#txt').html('<h2>한글</h2>');
+            let a = $('#name').val();
+            
+           // $('#name').val('홍길동');
+           // $('#kor').val(100);
+           // $('#eng').val(100);
+        }
+    </script>
+
+
+   
+</head>
+<body>
+    <form>
+        <label>이름</label>
+        <input type="text" name="name" id="name"><br>
+        <label>국어</label>
+        <input type="text" name="kor" id="kor"><br>
+        <label>영어</label>
+        <input type="text" name="eng" id="eng"><br>
+    </form>
+    <button class="saveBtn" onclick="sBtn()">저장</button>
+    <div id="txt"> </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function vbtn(){
+            let name1 = document.getElementById('name').value;
+            let ko1 = Number(document.getElementById('ko').value);
+            let eng1 =Number( document.getElementById('eng').value);
+            let math1 =Number(document.getElementById('math').value);
+            let sum1 = ko1+eng1+math1;
+            let avg1 = sum1/3
+
+           // document.write(name1+ko1+eng1+math1+sum1+avg1)
+            sum(name1,ko1,eng1,math1,sum1,avg1)
+        }
+        let title=['이름','국어','영어','수학','합계','평균']
+        function sum(){
+            
+        
+            // document.write(name+' : '+sum+' : '+avg)
+
+            for (let i = 0; i<title.length;i++)
+            {
+                document.write(title[i]+' : '+arguments[i])
+                document.write('<br>')
+            }
+         
+            
+        }
+
+    </script>
+</head>
+<body>
+    <form>
+        <label>이름</label>
+        <input type="'text" name="name" id="name"><br>
+        <label>국어</label>
+        <input type="'text" name="ko" id="ko"><br>
+        <label>영어</label>
+        <input type="'text" name="eng" id="eng"><br>
+        <label>수학</label>
+        <input type="'text" name="math" id="math"><br>
+
+
+    </form>
+    <button onclick="vbtn()">저장</button>
+    
+</body>
+</html>
