@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        // 마우스가 올라갓을때 테두리 검정, 배경색이 노란색을 들어가도록. 
+        $(function(){
+            $('li').click(function(){
+                $(this).css({'background':'yellow'}).css({'border':'1px solid black'})
+            })
+
+        });
+
+    </script>
+    <style>
+        ul{list-style: none; }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>다음페이지</li>
+        <li>구글</li>
+        <li>네이버</li>
+    </ul>
+    
+</body>
+</html>

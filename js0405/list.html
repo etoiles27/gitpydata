@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/notice_list.css">
+  <script>
+    $(function(){
+
+      let str=''
+      $('#tbody').html(str)
+      let arr1=[1,'안녕하세요','2022/04/05','홍길동',1]
+      let arr2=[2,'좋은하루','2022/04/05','유관순',1]
+      let arr3=[3,'반갑습니다','2022/04/05','이순신',1]
+      let arr4=[4,'굿모닝','2022/04/05','김구',1]
+      let arr5=[5,'하이','2022/04/05','도우너',1]
+      let arr6=[6,'^______^','2022/04/05','또치',1]
+      let arr7=[7,'날씨가..','2022/04/05','마이클',1]
+      let arr8=[8,'맛점','2022/04/05','고길동',1]
+      let arr9=[9,'오늘은..','2022/04/05','둘리',1]
+      let arr10=[10,'둘리가','2022/04/05','희동이',1]
+
+      let arr=[arr1,arr2,arr3,arr4,arr5,arr6,arr7,arr8,arr9,arr10]
+      for (let i = 0 ; i<arr.length ; i++)
+      {
+        str="<tr>"+"<td>"+ arr[i][0]+"</td><td>"+arr[i][1] +"</td><td>"+ arr[i][2] +"</td><td>"+ arr[i][3]+ "</td><td>"+ arr[i][4]+"</td></tr>"
+        $('#tbody').prepend(str)
+
+      }
+
+
+      $('#fBtn').click(function(){
+        let str="<tr>"+"<td>"+ $('#fno').val()+"</td><td>"+ $('#ftitle').val() +"</td><td>"+ $('#fdate').val() +"</td><td>"+  $('#fuser').val()+ "</td><td>"+  $('#fhit').val()+"</td></tr>"
+        $('#tbody').prepend(str) //->tbody 위쪽으로
+        //$('#tbody').append(str)    //->tbody 하단으로
+        //$('#tbody').html(str)    //->다지우고새롭게
+      })
+    })
+ 
+  </script>
+
+  <style>
+    #frm{margin-top: 100px; width: 500px; margin: 0 auto;}
+    #frm input{border:1px solid black; margin: 5px;}
+    #fBtn{width: 150px; height: 30px; text-align: center; }
+  </style>
+</head>
+<body>
+<section>
+    <h1>NOTICE</h1>
+    <div class="wrapper">
+      <form action="/search" name="search" method="post">
+        <select name="category" id="category">
+          <option value="0">전체</option>
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+        </select>
+
+        <div class="title">
+          <input type="text" size="16">
+        </div>
+  
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+
+    <table>
+      <colgroup>
+        <col width="15%">
+        <col width="40%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+      </colgroup>
+      <!-- 제목부분 -->
+      <tr>
+        <th>No.</th>
+        <th>제목</th>
+        <th>작성일</th>
+        <th>작성자</th>
+        <th>조회수</th>
+      </tr>
+      <!-- 내용부분 -->
+      <tbody id="tbody">
+        <tr>
+          <td>1</td>
+          <td>좋은 하루</td>
+          <td>2022/04/05</td>
+          <td>홍길동</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+      
+    </table>
+
+    <ul class="page-num">
+      <li class="first"></li>
+      <li class="prev"></li>
+      <li class="num"><div>1</div></li>
+      <li class="next"></li>
+      <li class="last"></li>
+    </ul>
+
+    
+    <form accept="#" method="get" name="frm" id="frm">
+      <label>번호</label>
+      <input type="text" name="fno" id="fno"><br>
+      <label>제목</label>
+      <input type="text" name="ftitle" id="ftitle"><br>
+      <label>작성일</label>
+      <input type="text" name="fdate" id="fdate"><br>
+      <label>작성자</label>
+      <input type="text" name="fuser" id="fuser"><br>
+      <label>조회수</label>
+      <input type="text" name="fhit" id="fhit"><br>
+      
+      <input type="button" id="fBtn" value="쓰기">
+    </form>
+    <!-- <div class="write" id="fwrite">쓰기</div> -->
+  </section>
+    
+</body>
+</html>
