@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<script>
+    $(function(){
+
+        $('#hBtn').click(function(){
+
+            let arr2 =$('input[name="hobby"]:checked') 
+            let arr = []
+            let n = $('input[name="hobby"]:checked').each(function(){
+                arr=[]
+                arr.push($(this).val())
+            })
+
+
+            $('#txt').text(arr+'가 선택되었습니다')
+        })
+        $('input:checkbox[name="hobby"]')
+    })
+
+</script>
+<body>
+    <form>
+        <label>취미</label><br>
+        <input type="checkbox" name="hobby" id="game" value="game">
+        <label for="game">게임</label>
+        <input type="checkbox" name="hobby" id="golf" value="golf">
+        <label for="golf">골프</label>
+        <input type="checkbox" name="hobby" id="swim" value="swim">
+        <label for="swim">수영</label>
+        <br>
+        <button type="button" id="hBtn">확인</button>
+    </form>
+    <div id="txt">game가 선택되었습니다</div>
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        function loginCheck(){
+            //document.getElementById('id').value
+            let a = document.getElementById('id').value
+            let b = document.getElementById('pw').value
+            let c = document.getElementById('memo').value
+            document.getElementById('divid').innerText = a
+            document.getElementById('divpw').innerText = b
+            document.getElementById('divmemo').innerText = c
+
+
+        }
+        // jquery
+        $(function(){
+/*
+            $('#lBtn').click(function(){
+
+
+                let a = $('#id').val()
+                let b = $('#pw').val()
+                let c = $('#memo').val()
+
+                $('#divid').text(a)
+                $('#divpw').text(b) 
+                $('#divmemo').html(c)
+            })
+
+*/
+        });
+    </script>
+</head>
+<body>
+    <form action="./js0406_02.html" method="get" name="frm">
+        <label>아이디</label>
+        <input type="text" name="id" id="id">
+        <br>
+        <label>비밀번호</label>
+        <input type="password" name="pw" id="pw">
+        <br>
+        <textarea rows="20" cols="60" name="memo" id="memo"></textarea>
+        <br>
+        <input type="submit" value="submit버튼">
+        <br>
+        <button type="button" id="lBtn" onclick="loginCheck()">로그인</button>
+
+
+    </form>
+    <div id="divid"></div>
+    <div id="divpw"></div>
+    <div id="divmemo"></div>
+    
+</body>
+</html>

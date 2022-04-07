@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        let arr=[ {stuId:'aaa',stuName:'홍길동',stuPw:111},
+                  {stuId:'bbb',stuName:'이순신',stuPw:222},
+                  {stuId:'ccc',stuName:'유관순',stuPw:333}
+        ]
+
+        $(function(){
+            $('#tBtn').click(function(){
+
+                let str=''
+
+                $.each(arr,function(i,item){
+
+                    str += '<tr><td>'
+                    str +=  item.stuId+'</td><td>'
+                    str +=  item.stuName+'</td><td>'
+                    str +=  item.stuPw+'</td></tr>'
+
+
+                    
+
+
+
+                })//arr func 
+                $('#tbody').html(str)
+
+
+
+            })//tbtn click
+
+        })//jquery
+
+    </script>
+    <style>
+        table,td,th{border: 1px solid black; border-collapse: collapse;}
+    </style>
+</head>
+<body>
+    <button id="tBtn">데이터가져오기</button>
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>비밀번호</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td colspan="3">데이터가 없습니다</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+
+            let count = 1;
+            let today = new Date()
+            let year =today.getFullYear()
+            let month =today.getMonth()+1
+            let day =today.getDate()
+            
+            month=String(month)
+            day=String(day)
+
+            if (month.length < 2) month = '0' + month; 
+            if (day.length < 2) day = '0' + day; 
+
+            
+            let todyadate = year+'/'+month+'/'+day
+            $(fdate).val(todyadate)
+
+            
+            // 자동 게시글생성
+            let str =''
+            let str3=''
+            let arr=[['홍길동',2],['홍길자',10],['홍갈순',5],['이순신',11],['한소희',100],['한소정',50],['송선유',20],['조승완',9],['공유진',7],['윤지현',15]]
+            // let str2 = '<tr><td>'+'1'+'</td><td>'+ '게시글작성' + '</td><td>'+ '2022/04/06' + '</td><td>'+ '홍길동'+ '</td><td>'+ '1' +'</td></tr>'
+            for(let i = 0; i<10;i++){
+                str += '<tr id="'+count+'">'
+                str += '<td>'+count+'</td><td>'
+                str += '게시글작성' +count+ '</td><td>'
+                str += '2022/04/06' + '</td><td>'
+                str += arr[i][0]+ '</td><td>'
+                str += arr[i][1] +'</td></tr>'
+                count++
+            }
+            $('tbody').html(str)
+                            
+            //글쓰기버튼클릭
+            $('#fwrite').click(function(){
+                let str1 =''
+                let n = $('#fname').val();
+                let t = $('#ftitle').val();
+                let d = $('#fdate').val();
+
+                str1 += '<tr id="'+count+'">'
+                str1 += '<td>'+count+'</td><td>'
+                str1 += t + '</td><td>'
+                str1 += d + '</td><td>'
+                str1 += n + '</td><td>'
+                str1 += '1' +'</td></tr>'
+
+                count++
+                $('tbody').append(str1)
+            })
+
+            //삭제
+            $('#fdelete').click(function(){
+                let dnum = $("#delnum").val()
+                if(confirm('정말로 삭제하시겠습니까?'))
+                    $('#'+dnum).remove()
+
+            })
+            // 불러오기
+            $('#fopen').click(function(){
+                let fnum ='#'+ $("#fnum").val()
+                let md = $(fnum+">td:nth-child(3)").text()
+                let mt = $(fnum+">td:nth-child(2)").text()
+                let mn = $(fnum+">td:nth-child(4)").text()
+
+                $("#fname").val(mn)
+                $("#ftitle").val(mt)
+                $("#fdate").val(md)
+                $("#tdid").val(fnum)
+
+            })
+
+            // 수정
+            $('#fmodify').click(function(){
+
+                let mid = $("#tdid").val()
+
+                let mdate = $("#fdate").val()
+                let mtitle = $("#ftitle").val()
+                let mname = $("#fname").val()
+                $(mid+">td:nth-child(3)").text(mdate)
+                $(mid+">td:nth-child(2)").text(mtitle)
+                $(mid+">td:nth-child(4)").text(mname)
+
+
+
+            })
+
+
+
+        })
+    </script>
+
+    <style>
+        table{width: 800px; margin: 0 auto; margin-top: 50px;}
+        table,th,td{border: 1px solid black; border-collapse: collapse;}
+        th,td{height: 40px; text-align: center;}
+        th{background-color: lightgray;}
+        form{width: 800px; font-size: 20px; margin: 0 auto;}
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>작성자</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody id="section">
+            <tr>
+                <td>1</td>
+                <td>게시글작성</td>
+                <td>2022/04/06</td>
+                <td>홍길동</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <form action="#" method="get" name="frm"    >
+            <h3> 글쓰기</h3>
+            <input type="hidden" name="tdid" id="tdid"><br>
+            <label>작성자</label>
+            <input type="text" name="fname" id="fname"><br>
+            <label>제목</label>
+            <input type="text" name="ftitle" id="ftitle"><br>
+            <label>날짜</label>
+            <input type="text" name="fdate" id="fdate" readonly><br>
+            <input type="button" id="fBtn" value="쓰기">
+            <input type="button" id="fmodify" value="수정">
+            <br>
+            <label>번호</label>
+            <input type="text" name="fnum" id="fnum"><br>
+            <input type="button" id="fopen" value="불러오기">
+            <br>
+            <label>삭제번호</label>
+            <input type="text" name="delnum" id="delnum"><br>
+            <input type="button" id="fdelete" value="삭제">
+      
+
+        </form>
+
+    </div>
+    
+</body>
+</html>
