@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>xml data 가져오기</title>
+    <script>
+        let dataxml=''
+        $(function(){
+            $('#ajaxBtn').click(function(){
+                $.ajax({
+                    url:"./js/dataset.xml",
+                    data:{},
+                    dataType:"xml",
+                    success:function(data){
+                        dataxml=$(data).find("dataset")
+                        //console.log(dataxml)
+                        //console.log(dataxml.find("record").length)
+                        let len = dataxml.find("record").length
+                        if(len>0){
+                            let str=''
+                            for (let i =0; i<len; i++){
+                                let dd =  dataxml.find("record").eq(i)
+                                str += '<tr><td>'
+                                str += dd.find('id').text() +'</td><td>'
+                                str += dd.find('first_name').text() +'</td><td>'
+                                str += dd.find('last_name').text() +'</td><td>'
+                                str += dd.find('email').text() +'</td><td>'
+                                str += dd.find('gender').text() +'</td></tr>'
+        
+
+                            }
+                            $('#btable').html(str)
+                        }
+
+                    },
+                    error:function(){
+                        alert('fail')
+                    }
+
+
+
+                })//ajax
+              
+            })//ajaxBtn
+        })//jquery
+    </script>
+    <style>
+        div{width:1100px; margin:0 auto; }
+        #ajaxBtn{width:200px; height:50px; margin:50px 0 30px 0;
+        cursor: pointer; }
+        table,th,td{border:1px solid black; border-collapse: collapse;
+        width:1100px; margin-top:50px; margin:0 auto; text-align: center;}
+        th,td{height:30px;}
+    </style>
+</head>
+<body>
+    <div>
+        <button id="ajaxBtn" >데이터 가져오기</button>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>성</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>성별</th>
+        </tr>
+        <tbody id="btable">
+            <tr>
+                <td>1</td>
+                <td>hong</td>
+                <td>80</td>
+                <td>80</td>
+                <td>80</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

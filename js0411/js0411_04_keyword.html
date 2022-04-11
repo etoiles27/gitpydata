@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>한국관광공사 관광사진 정보 xml data 가져오기</title>
+    <script>
+        let dataxml=''
+        $(function(){
+            $('#ajaxBtn').click(function(){
+                let searchword=''
+                searchword=$("#search").val()
+                
+                $.ajax({
+                    url:"http://api.visitkorea.or.kr/openapi/service/rest/PhotoGalleryService/galleryDetailList?serviceKey=t%2FJIY9cPLzrKeXsvafAp3Ub757LxSa%2FHo4gnGvfwwRnPUZaTZn2LR2yVxHMjEcSFfvVL6J6PgqTeR199b5NEFA%3D%3D&pageNo=1&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&title="+searchword,
+                    data:{},
+                    dataType:"xml",
+                    success:function(data){
+                        dataxml=$(data).find("items")
+                        //console.log(dataxml)
+
+                        
+                        let len = dataxml.find("item").length
+                        //console.log(len)
+                        
+                        if(len>0){
+                            let str=''
+                            for (let i =0; i<len; i++){
+                                let dd =  dataxml.find("item").eq(i)
+                                str += '<tr><td>'
+                                str += dd.find('galContentId').text() +'</td><td>'
+                                str += dd.find('galCreatedtime').text() +'</td><td>'
+                                str += dd.find('galPhotographer').text() +'</td><td>'
+                                str += dd.find('galTitle').text() +'</td><td>'
+                                str +=    '<a href="'+dd.find('galWebImageUrl').text()+'" target="_blank"><img src="'+dd.find('galWebImageUrl').text() +'"></td></tr>'
+                                
+        
+
+                            }
+                            $('#btable').html(str)
+                            
+                        }
+
+                    },
+                    error:function(){
+                        alert('fail')
+                    }
+
+
+
+                })//ajax
+              
+            })//ajaxBtn
+        })//jquery
+    </script>
+    <style>
+        div{width:1100px; margin:0 auto; }
+        #ajaxBtn{width:200px; height:50px; margin:50px 0 30px 0;
+        cursor: pointer; }
+        table,th,td{border:1px solid black; border-collapse: collapse;
+        width:1100px; margin-top:50px; margin:0 auto; text-align: center;}
+        th,td{height:30px;}
+        #itemDate{text-align: right;}
+        img{width: 50px;}
+    </style>
+</head>
+<body>
+    <div>
+        <label>키워드를 입력하세요</label>
+        <input type="text" id="search" name="search">
+        <button id="ajaxBtn" >데이터 가져오기</button>
+    </div>
+    <br>
+    <div id="itemDate"></div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>시간</th>
+            <th>사진작가</th>
+            <th>제목</th>
+            <th>사진주소</th>
+        </tr>
+        <tbody id="btable">
+            <tr>
+                <td>1</td>
+                <td>20220331163128</td>
+                <td>한국관광공사 김지호</td>
+                <td>화순곶자왈 생태탐방숲길</td>
+                <td>http://tong.visitkorea.or.kr/cms2/website/35/2814635.jpg</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            $('#saleBtn').click(function(){
+
+                let xData=[2015,2016,2017,2018,2019,2020,2021]
+                let yData=[]
+                let arr = []
+                let arrlabel=[]
+
+                let aaa=[1000,2000,3000,4000,5000,6000,7000]
+                let bbb=[]
+
+                yData.push($("#sale15").val())
+                yData.push($("#sale16").val())
+                yData.push($("#sale17").val())
+                yData.push($("#sale18").val())
+                yData.push($("#sale19").val())
+                yData.push($("#sale20").val())
+                yData.push($("#sale21").val())
+  
+               // $('input[type="text"]').each(function(){
+                $('input[name="sales"]').each(function(){
+                    
+                    arr.push($(this).val())
+                })
+                $('input[name="profit"]').each(function(){
+                    
+                    bbb.push($(this).val())
+                })
+                
+
+                $('label').each(function(){
+                    //arrlabel.push(o.text())
+
+                  arrlabel.push($(this).text())
+
+                })
+                
+
+                $.ajax({
+                    url:"./js/income.json",
+                    data:{"year":arrlabel, "income":arr},
+                    dataType:"json",
+                    success:function(data){
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        const myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: arrlabel,
+                                datasets: [{
+                                    label: '삼성전자 매출',
+                                    data: arr,
+                                    
+                                    backgroundColor: 
+                                        
+                                        'rgba(54, 162, 235, 0.2)'
+                                        
+                                    ,
+                                    borderColor: 
+                                        
+                                        'rgba(54, 162, 235, 1)'
+                    
+                                    ,
+                                    borderWidth: 3
+                                } ,
+                                {
+                                    label: '삼성전자 영업이익',
+                                    data: bbb,
+                                    backgroundColor: 
+                                    'rgba(255, 99, 132, 0.2)'
+                                    ,
+                                    borderColor: 
+                                    'rgba(255, 99, 132, 1)'
+                                    ,
+                                    borderWidth: 3
+
+
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true,
+                                            min: 0,
+                                            //  stepSize : 100,
+                                            //   fontSize : 14,
+                                            //   max:2000
+                                        }
+                                    }]
+                                    /*
+                                    y: {
+                                        beginAtZero: true
+                                    }*/
+                                }
+                            }
+                        }); //mychart 
+        
+                    },
+                    error:function(){}})
+
+
+               
+         
+                
+
+
+               
+      
+
+            })//chartbtn
+
+
+
+
+        })//jquery
+
+    </script>
+</head>
+<body>
+    <div>
+        <h4>삼성전자 연도별 매출액을 입력해주세요 </h4>
+        <table>
+            <tr>
+                <td><label>2015년</label></td>
+                <td><input type="text" name="sales" id="sale15" value="98000"></td>
+                <td><input type="text" name="profit" id="profit15" value="9008"></td>
+            </tr>
+            <tr>
+                <td><label>2016년</label></td>
+                <td><input type="text" name="sales"  id="sale16" value="121000"></td>
+                <td><input type="text" name="profit" id="profit16" value="8973"></td>
+            </tr>
+            <tr>
+                <td><label>2017년</label></td>
+                <td><input type="text" name="sales"  id="sale17" value="136000"></td>
+                <td><input type="text" name="profit" id="profit17" value="6032"></td>
+            </tr>
+            <tr>
+                <td><label>2018년</label></td>
+                <td><input type="text"  name="sales" id="sale18" value="154000"></td>
+                <td><input type="text" name="profit" id="profit18" value="11042"></td>
+            </tr>
+            <tr>
+                <td><label>2019년</label></td>
+                <td><input type="text" name="sales"  id="sale19" value="165000"></td>
+                <td><input type="text" name="profit" id="profit19" value="15644"></td>
+            </tr>
+            <tr>
+                <td><label>2020년</label></td>
+                <td><input type="text" name="sales"  id="sale20" value="201000"></td>
+                <td><input type="text" name="profit" id="profit20" value="29049"></td>
+            </tr>
+            <tr>
+                <td><label>2021년</label></td>
+                <td><input type="text" name="sales"  id="sale21" value="228000"></td>
+                <td><input type="text" name="profit" id="profit21" value="36770"></td>
+            </tr>
+        </table>
+        <button id="saleBtn">그래프를 그려주세요</button>
+    </div>
+    <div>
+        <canvas id="myChart"></canvas>
+
+    </div>
+</body>
+</html>
