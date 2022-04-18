@@ -111,19 +111,21 @@ def stuModify():
     if searchNo==1:
         print('현재 국어점수 :' , row[2])
         up_kor = int(input('변경할 국어점수 입력>>'))
-        sql1="update studata set kor=:1, eng=:2, math=:3, total=:4, avg=:5 where stuname=:6"
-        rows1=cs.execute(sql1,(up_kor,cur_eng,cur_math,(up_kor+cur_eng+cur_math),(up_kor+cur_eng+cur_math)/3,stuname))
+        sql1="update studata set kor=:1,total=:2, avg=:3 where stuname=:4"
+        rows1=cs.execute(sql1,(up_kor,(up_kor+cur_eng+cur_math),(up_kor+cur_eng+cur_math)/3,stuname))
         print("국어점수가 수정되었습니다. : ",cs.rowcount)
         
     elif searchNo==2:
         print('현재 영어점수 :' , row[3])
         up_eng = int(input('변경할 영어점수 입력>>'))
-        rows1=cs.execute(sql1,(cur_kor,up_eng,cur_math,(cur_kor+up_eng+cur_math),(cur_kor+up_eng+cur_math)/3,stuname))
+        sql1="update studata set eng=:1,total=:2, avg=:3 where stuname=:4"
+        rows1=cs.execute(sql1,(up_eng,(cur_kor+up_eng+cur_math),(cur_kor+up_eng+cur_math)/3,stuname))
         print("국어점수가 수정되었습니다. : ",cs.rowcount)
     elif searchNo==3:
         print('현재 수학점수 :' , row[4])
         up_math = int(input('변경할 수학점수 입력>>'))
-        rows1=cs.execute(sql1,(cur_kor,cur_eng,cur_math,(cur_kor+up_math+cur_math),(cur_kor+up_math+cur_math)/3,stuname))
+        sql1="update studata set math=:1,total=:2, avg=:3 where stuname=:4"
+        rows1=cs.execute(sql1,(up_math,(cur_kor+cur_eng+up_math),(cur_kor+cur_eng+up_math)/3,stuname))
         print("국어점수가 수정되었습니다. : ",cs.rowcount)
     elif searchNo==0:
         print('상위메뉴로 이동합니다.')
