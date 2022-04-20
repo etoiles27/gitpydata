@@ -9,21 +9,33 @@ soup = BeautifulSoup(res.text,"lxml")
 
 
 tr = soup.find_all('tr')
-
-
 avg = 0 
-for i in range(1,len(tr)):
-    star=tr[i].find("div",{"class":"rating_type"}).strong.get_text()
+# for i in range(1,len(tr)):
+#     star=tr[i].find("div",{"class":"rating_type"}).strong.get_text()
+#     avg += float(star)
+    
+#     # print(tr[i].img["src"])
+#     print(tr[i].find("td",{"class":"title"}).a.get_text())
+#     print(star)
+#     print(tr[i].find("td",{"class":"num"}).get_text())
+
+
+for i , cartoon in enumerate(tr):
+    title = cartoon.find("td",{"class":"title"})
+   # print(title)
+    if title == None :
+        continue
+    star=cartoon.find("div",{"class":"rating_type"}).strong.get_text()
     avg += float(star)
     
-    print(tr[i].img["src"])
-    print(tr[i].find("td",{"class":"title"}).a.get_text())
-    print(star)
-    print(tr[i].find("td",{"class":"num"}).get_text())
-
-print("평균평점: {}".format(avg/(len(tr)-1)) )
+    # print(tr[i].img["src"])
+    print(cartoon.find("td",{"class":"title"}).a.get_text(), end='\t')
+    print(star, end='\t')
+    print(cartoon.find("td",{"class":"num"}).get_text())
 
 
-tbody =  soup.find_all('tbody')
+
+print("평균평점: {:.2f}".format(avg/(len(tr)-1)) )
+
 
 
