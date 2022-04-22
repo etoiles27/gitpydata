@@ -1,3 +1,4 @@
+
 import cx_Oracle
 
 
@@ -6,6 +7,7 @@ def myConn():
     #db 연결
     conn =cx_Oracle.connect("ora_user/1234@localhost:1521/xe")
     return conn
+
 
 
 def stuInsert():
@@ -179,21 +181,58 @@ def stuRank():
     conn = myConn() #db연결 
     #실행선언
     cs=conn.cursor()
-    stuname = input('학생이름을 입력하세요.>>')
-    #sql =  "select * from studata where lower(stuname)='" +stuname.lower() +"'"
-    sql =  "select * from studata "
+
+    sql = "select * from studata order by stuno"
+    
     #sql =  "select * from studata where stuname like '%" +stuname +"%'"
     rows=cs.execute(sql)
-    print('-'*60)
-    print('번호','이름','국어','영어','수학','합계','평균','등수',sep='\t')  
-    print('-'*60)
-       
+        
+    rows2 = []
+    rrank=[]
     
-    count = 0
+    # 학생 번호 순서로 쿼리에서 가져와서 r
     for row in rows:
-        if row[1].find(stuname) != -1:
-            print(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],sep='\t')  
-            count = 1
+        rows2.append(row[5])
+    rcount=0   
+    
+   
+    
+    for i in range(len(rows2)):
+        rcount=1
+        for j in range(len(rows2)):
+            if rows2[i]<rows2[j]:
+                rcount+=1
+        rrank.append(rcount)
+        
+    # print(rrank)   
+    
+    
+    rows=cs.execute(sql)
+    
+    k = 0
+    
+        
+    # for i in range(10):
+    #     print(rows[i][0],rows[i][1],rows[i][2])
+    # for row in rows:
+        
+    #     sql1 = "update studata set rank = "+str(200)+" where STUNO = '"+str(1001)+"'"
+    #     cs.execute(sql1)
+        
+        
+    #     print(row[0], rows[0][0])
+    #     str_rank = str(rrank[k])
+    #     str_stuno = str(row[0])
+        # print(str_rank,str_stuno)
+        # sql1 = "update studata set rank="+str(20)+" where stuno="+str(1001)
+        # cs.execute(sql1)
+        # cs.execute(sql1,(rrank[k],row[0]))
+        # k+=1
+    # sql닫기
+    cs.close()
+    conn.commit()
+    conn.close()
+    
         
         
     
