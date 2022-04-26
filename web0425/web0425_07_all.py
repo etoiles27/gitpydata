@@ -15,7 +15,7 @@ import csv
 
 # 크롬브라우져 생성 및 페이지 이동 
 # option 으로 화면 바로 안꺼지게- 
-url = 'https://flight.naver.com/flights/domestic/SEL-CJU-20220524/CJU-SEL-20220525?adult=2&fareType=YC'
+url = 'https://flight.naver.com'
 options = webdriver.ChromeOptions()
 options.add_experimental_option('detach',True)
 browser = webdriver.Chrome('C:\pydata\chromedriver.exe',options=options)
@@ -23,7 +23,44 @@ browser = webdriver.Chrome('C:\pydata\chromedriver.exe',options=options)
 browser.maximize_window()
 browser.get(url=url)
 
+# 출발
+time.sleep(2)
+elem = browser.find_elements_by_class_name('select_code__d6PLz')[0].click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/section/section/button[1]').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/section/section/div/button[1]/i[2]').click()
+# 도착 
+time.sleep(2)
+elem = browser.find_elements_by_class_name('select_code__d6PLz')[1].click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/section/section/button[1]').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/section/section/div/button[2]/i[2]').click()
 
+#가는날
+time.sleep(2)
+# elem = browser.find_elements_by_class_name('tabContent_option__2y4c6 select_Date__1aF7Y')[0].click()
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/div[2]/div[2]/button[1]').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/div[1]/div[2]/div/div[3]/table/tbody/tr[4]/td[3]/button').click()
+# #오는날
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/div[2]/div[2]/button[2]').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[9]/div[2]/div[1]/div[2]/div/div[3]/table/tbody/tr[4]/td[4]/button').click()
+time.sleep(2)
+
+
+
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/div[2]/div[3]/button').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/div[3]/div/div/div[1]/div[1]/button[2]').click()
+time.sleep(2)
+browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/div[2]/div[3]/button').click()
+time.sleep(2)
+browser.find_element_by_class_name('searchBox_txt__3RoCw').click()
+# browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/button/span').click()
 
 WebDriverWait(browser,10).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="__next"]/div/div[1]/div[4]/div/div[2]/div[2]')))
 
@@ -46,6 +83,7 @@ while True:
     # 무한반복 끝
 
     
+
 
 page_url = browser.page_source
 soup = BeautifulSoup(page_url,"lxml")
