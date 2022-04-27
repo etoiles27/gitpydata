@@ -148,7 +148,7 @@ browser.quit()
 smtpName ="smtp.naver.com"
 smtpPort = 587
 
-sendEmail = 'rimicom@naver.com'
+sendEmail = 'ㅁㅁ@naver.com'
 password = '1111'
 recvEmail = sendEmail
 

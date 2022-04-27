@@ -5,8 +5,8 @@ from email.mime.text import MIMEText # 글자를 보낼 때 사용한다.
 smtpName ="smtp.gmail.com"
 smtpPort = 587
 
-sendEmail = 'rimicom1004@gmail.com'
-password = 'unjmkgprcgwddsnm'
+sendEmail = 'ㅁㅁ@gmail.com'
+password = '1111'
 recvEmail = sendEmail
 # recvEmail = 'xnmx1234@naver.com'
 

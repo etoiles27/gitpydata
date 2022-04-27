@@ -75,6 +75,6 @@ from saveall import *
 # closeBrowser(browser)
 
 
-# sendEmail('rimicom@naver.com','안녕','이건테스타야')
+# sendEmail('ㅁㅁ@naver.com','안녕','이건테스타야')
 
-# sendEmailWithAttachment('rimicom@naver.com','안녕','이건테스타야','멜론100.csv')
+# sendEmailWithAttachment('ㅁㅁ@naver.com','안녕','이건테스타야','멜론100.csv')

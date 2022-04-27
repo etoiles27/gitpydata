@@ -17,9 +17,9 @@ from email.mime.text import MIMEText # 글자를 보낼 때 사용한다.
 smtpName ="smtp.naver.com"
 smtpPort = 587
 
-sendEmail = 'rimicom@naver.com'
+sendEmail = 'ㅁㅁ@naver.com'
 password = '-'
-recvEmail = 'xnmx1234@naver.com'
+recvEmail = 'ㅁㅁ@naver.com'
 
 title = '파이썬 이메일 보내기 수업'
 content ='파이썬 수업이 진행중입니다. 현재 38일차 입니다.'

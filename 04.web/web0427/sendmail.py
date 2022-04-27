@@ -12,8 +12,8 @@ from email import encoders #인코딩해줌
 def sendEmail(emailadd,tit,cont):
     smtpName = "smtp.naver.com"
     smtpPort = 587
-    sendEmail = "rimicom@naver.com"
-    password = "gkflagkfla"
+    sendEmail = "ㅁㅁㅁ@naver.com"
+    password = "1111"
     recvEmail = emailadd
     
     title = tit
@@ -36,7 +36,7 @@ def sendEmail(emailadd,tit,cont):
 def sendEmailWithAttachment(emailadd,tit,cont,filen):
     smtpName = "smtp.naver.com"
     smtpPort = 587
-    sendEmail = "rimicom@naver.com"
+    sendEmail = "ㅁㅁ@naver.com"
     password = "1111"
     recvEmail = emailadd
     title = tit

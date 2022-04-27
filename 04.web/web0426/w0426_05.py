@@ -41,7 +41,7 @@ time.sleep(2)
 smtpName ="smtp.naver.com"
 smtpPort = 587
 
-sendEmail = 'rimicom@naver.com'
+sendEmail = 'ㅁㅁ@naver.com'
 password = '-'
 recvEmail = sendEmail
 #recvEmail = 'xnmx1234@naver.com'

@@ -14,9 +14,9 @@ nowtime = datetime.datetime.now()
 
 smtpName = "smtp.naver.com"
 smtpPort = 587
-sendEmail = "rimicom@naver.com"
+sendEmail = "ㅁㅁ@naver.com"
 password = "1111"
-recvEmail = "rimicom@naver.com"
+recvEmail = "ㅁㅁ@naver.com"
 
 
 title = "주식시세 1-200까지의 파일을 첨부함"

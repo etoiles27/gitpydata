@@ -14,9 +14,9 @@ from email import encoders
 smtpName ="smtp.naver.com"
 smtpPort = 587
 
-sendEmail = 'rimicom@naver.com'
+sendEmail = 'ㅁㅁ@naver.com'
 password = 'gkflagkfla'
-recvEmail = 'rimicom@naver.com'
+recvEmail = 'ㅁㅁ@naver.com'
 
 
 title = '첨부파일 이름'
@@ -65,8 +65,8 @@ s.close()
 # smtpName ="smtp.gmail.com"
 # smtpPort = 587
 
-# sendEmail = 'rimicom1004@gmail.com'
-# password = 'bldaatxgjkxnrrkd'
+# sendEmail = 'ㅁㅁ@gmail.com'
+# password = '111'
 # recvEmail = sendEmail
 
 
