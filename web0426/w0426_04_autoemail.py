@@ -18,7 +18,7 @@ smtpName ="smtp.naver.com"
 smtpPort = 587
 
 sendEmail = 'rimicom@naver.com'
-password = 'gkflagkfla'
+password = '-'
 recvEmail = 'xnmx1234@naver.com'
 
 title = '파이썬 이메일 보내기 수업'

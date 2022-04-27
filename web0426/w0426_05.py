@@ -41,7 +41,7 @@ smtpName ="smtp.naver.com"
 smtpPort = 587
 
 sendEmail = 'rimicom@naver.com'
-password = 'gkflagkfla'
+password = '-'
 recvEmail = sendEmail
 #recvEmail = 'xnmx1234@naver.com'
 
