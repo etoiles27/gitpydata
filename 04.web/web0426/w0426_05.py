@@ -19,6 +19,7 @@ from email.mime.text import MIMEText # 글자를 보낼 때 사용한다.
 url = 'https://www.google.com/'
 options = webdriver.ChromeOptions()
 options.add_experimental_option('detach',True)
+
 browser = webdriver.Chrome('C:\pydata\chromedriver.exe',options=options)
 browser.get(url)
 
