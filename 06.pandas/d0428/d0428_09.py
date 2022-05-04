@@ -29,11 +29,18 @@ df = pd.read_excel('score.xlsx',index_col='지원번호')
 # print(df.values[0:5])
 
 
-print(df.index)
-print(df.index[3])
-print(df.iloc[0])
-print(df.loc['3번'])
+# print(df.index)
+# print(df.index[3])
+# print(df.iloc[0])
+# print(df.loc['3번'])
 
 
 # print(df)
 
+
+ilis = []
+for i in range(0,500):
+    ilis.append(i)
+# df = pd.read_excel('user.xlsx',skiprows=[i for i in range(0,500)],nrows=10) 
+df = pd.read_excel('user.xlsx',skiprows=ilis,nrows=10) 
+print(df)

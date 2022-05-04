@@ -1,0 +1,10 @@
+[{"stuNo":1,"stuName":"주바다","kor":99,"eng":84,"math":81},
+    {"stuNo":2,"stuName":"공유진","kor":94,"eng":95,"math":83},
+    {"stuNo":3,"stuName":"김병두","kor":100,"eng":90,"math":87},
+    {"stuNo":4,"stuName":"김샛별","kor":100,"eng":84,"math":86},
+    {"stuNo":5,"stuName":"명성준","kor":80,"eng":81,"math":90},
+    {"stuNo":6,"stuName":"송선유","kor":86,"eng":92,"math":92},
+    {"stuNo":7,"stuName":"송준호","kor":96,"eng":95,"math":84},
+    {"stuNo":8,"stuName":"양홍옥","kor":91,"eng":85,"math":100},
+    {"stuNo":9,"stuName":"윤상운","kor":82,"eng":98,"math":89},
+    {"stuNo":10,"stuName":"윤지현","kor":97,"eng":82,"math":87}]
