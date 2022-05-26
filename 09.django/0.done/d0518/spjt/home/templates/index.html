@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+</head>
+<body>
+    <h2>HOME</h2>
+    <li><a href={% url 'students:stuList' %}>학생 목록</a></li>
+    <li><a href={% url 'students:stuWrite' %}>학생 등록</a></li>
+    <li><a href='admin'>관리자 페이지</a></li>
+    <li><a href={% url 'member:login' %}>로그인</a></li>
+    <li><a href='#'>로그아웃</a></li>
+
+    <li><a href={% url 'member:memberList' %}>memberlist</a></li>
+    <li><a href={% url 'member:list' %}>전체list2</a></li>
+    <img src="{% static 'images/abc.jpg' %}">
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script>
+        function cancel(){
+            if(confirm('취소하시겠습니까 ? ')){
+                location.href="{%  url 'students:stuList' %}"
+            }
+           
+
+        }
+
+        function formbtn(){
+            if(document.getElementById('name').value==''){
+                alert('이름을 입력하셔야 합니다.')
+                return false
+            }
+            return document.frm.submit()
+        }
+    </script>
+</head>
+<body>
+    <h2>Student Register Page</h2>
+    <form action="{%  url 'students:stuWriteOk' %}" method="post" name="frm">
+        {% csrf_token%}
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id='name' name="name"></td>
+            </tr>
+            <tr>
+                <td>Major</td>
+                <td><input type="text" name="major"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" name="age"></td>
+            </tr>
+            <tr>
+                <td>Grade</td>
+                <td><select name="grade"> 
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gender" id="male" value="남자">
+                    <label for="male">남자</label>
+                    <input type="radio" name="gender" id="female" value="여자">
+                    <label for="female">여자</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Hobby</td>
+                <td>
+                    <input type='checkbox' name="hobby" id='game' value='게임'> 
+                    <label for='game'>게임</label>
+                    <input type='checkbox' name="hobby" id='golf' value='골프'> 
+                    <label for='golf'>골프</label>
+                    <input type='checkbox' name="hobby" id='swim' value='수영'> 
+                    <label for='swim'>수영</label>
+                    <input type='checkbox' name="hobby" id='book' value='독서'> 
+                    <label for='book'>독서</label>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                {% comment %} <td><input type="button" onclick='formbtn()' value="전송"></td> {% endcomment %}
+                <td><button type="button" onclick="formbtn()">SAVE</button></td>
+                <td><button type="button" onclick="cancel()">CANCEL</button></td>
+            </tr>
+
+        
+        </table>
+        
+        
+
+    </form>
+    
+</body>
+</html>

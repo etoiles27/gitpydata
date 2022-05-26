@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+</head>
+<body>
+    <h2>MAIN PAGE</h2>
+    <ul>
+        
+        <h3>로그인을 하셔야 글쓰기가 가능합니다.</h3>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원가입</a></li>
+        
+        <h3> 님 환영합니다 </h3>
+        <li><a href="#">로그아웃</a></li>
+        <li><a href="{% url 'board:fList' %}">자유게시판</a></li>
+        <li><a href="#">전체회원리스트</a></li>
+        <li><a href="admin">관리자</a></li>
+        
+        <image src="{% static 'images/d.gif'%}"></image>
+    </ul>
+</body>
+</html>

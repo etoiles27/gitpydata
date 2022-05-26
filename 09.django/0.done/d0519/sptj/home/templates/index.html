@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    <h2>Home</h2> 
+    <ul>
+        {% if not request.session.session_id %}
+        <h3>로그인을 하셔야 회원정보를 보실 수 있습니다. </h3>
+        <li><a href="{% url 'member:login' %}">login</a></li>
+        <li><a href="{% url 'member:mlist' %}">회원가입 </a></li>
+        
+        {% else %}
+        <h3>{{ request.session.session_name }}님 환영합니다</h3>
+        <li><a href="admin">admin</a></li>
+        <li><a href="{% url 'member:mlist' %}">전체 회원 정보 </a></li>
+        <li><a href="{% url 'member:logout' %}">logout</a></li>
+        {% endif %}
+        <image src = "{% static 'images/d.gif' %}"></image>
+
+    </ul>
+</body>
+</html>
