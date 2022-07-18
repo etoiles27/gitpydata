@@ -1,0 +1,858 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="" />
+<link rel="apple-touch-icon-precomposed" href="" />
+<title>ë¤ì´ì´í¸ ê³ì°ê¸°</title>
+<style>
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0;-webkit-text-size-adjust:none}
+body{position:relative;background-color:#f4f4f4;font-size:14px;line-height:1.25em;color:#000;min-height:460px;}
+section,nav,article,aside,hgroup,header,footer{display:block}
+input,textarea,select,button,table{font-size:inherit;font-family:inherit;line-height:inherit}
+body.s{font-family:Helvetica,AppleGothic}
+img,fieldset{border:0}
+ul,ol{list-style:none}
+hr{display:none !important}
+legend{display:none;}
+em,address{font-style:normal}
+a{color:inherit;text-decoration:none}
+#ct{clear:both;position:relative;width:100%;background-color:#f8f8f8}
+#ct:after{display:block;clear:both;height:1px;margin-top:-1px;content:''}
+.clear{clear:both;}
+.bd{font-weight:bold;}
+/* Footer */
+
+/* overlay styles, all needed */
+.overlay {
+	display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* just some content with arbitrary styles for explanation purposes */
+.modal {
+	position:relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+}
+
+.modal .content{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	overflow-y: scroll; 
+	-webkit-overflow-scrolling: touch;
+}
+
+.modal .cbtn{
+	position:absolute;
+	right:20px;
+	top:20px;
+	width:50px;
+	height:50px;
+	z-index: 777;
+}
+
+.ct{width:100%;}
+
+.var1{
+-webkit-animation-duration: 1s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-name: spin_var2;
+-webkit-transform: rotate(360deg)
+}
+
+.ajax-loading{
+display:block;
+position:absolute;
+left:15px;top:30px;
+text-indent:-999em;
+background-image: url(/images/common/loader.png);
+background-size: 35px 35px;
+border-bottom-left-radius: 20px 20px;
+border-bottom-left-radius: 20px 20px;
+border-bottom-right-radius: 20px 20px;
+border-bottom-right-radius: 20px 20px;
+border-top-left-radius: 20px 20px;
+border-top-left-radius: 20px 20px;
+border-top-right-radius: 20px 20px;
+border-top-right-radius: 20px 20px;
+height: 35px;
+width: 35px;
+}
+
+.ajax-loading-var{
+	-webkit-animation-duration: 1s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-name: spin_var2;
+-webkit-transform: rotate(360deg);
+}
+
+@-webkit-keyframes spin_var2 {
+	from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+/*
+#loader_l .spin.var2 {
+    -webkit-animation-name: spin_var2;
+	-webkit-animation-duration: 12s;
+}
+
+@-webkit-keyframes spin_var2 {
+	from {-webkit-transform: rotate(0deg);}
+  	to {-webkit-transform: rotate(3600deg);}
+}
+
+#loader_l .spin.var3 {
+  -webkit-animation-timing-function: linear;
+}
+*/
+/*
+.a .a_fcs{-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.a .a_fcs_on{position:absolute;top:-999em;left:-999em;z-index:1000;border:2px solid #fe9230;-webkit-border-radius:5px;-webkit-box-shadow:inset 1px 1px 1px #b33f08,inset -1px -1px 1px #b33f08,1px 1px 1px #b33f08,-1px -1px 1px #b33f08}
+-webkit-appearance:none   webkit-gradient(linear,0 0,0 100%,from(#1cd327),to(#11b217));
+
+@media screen and (-webkit-min-device-pixel-ratio:1.5){.tab_n{background-image:url(http://static.naver.net/www/m/im2/ico_tab_n15.png);-webkit-background-size:23px 23px}}
+@media screen and (-webkit-min-device-pixel-ratio:2){.tab_n{background-image:url(http://static.naver.net/www/m/im2/ico_tab_n2.png);-webkit-background-size:23px 46px}}
+
+.svst,.svfv,.svup{display:inline-block;width:28px;height:26px;margin-left:-7px;background:url(http://static.naver.net/www/m/im2/ico_svc.png) no-repeat;-webkit-background-size:88px 52px;text-align:center;vertical-align:top}
+@media screen and (-webkit-min-device-pixel-ratio:1.5){.svst,.svfv,.svup{background-image:url(http://static.naver.net/www/m/im2/ico_svc15.png)}}
+@media screen and (-webkit-min-device-pixel-ratio:2){.svst,.svfv,.svup{background-image:url(http://static.naver.net/www/m/im2/ico_svc2.png)}}
+
+*/
+
+/* header sub title*/
+.s_t{position:relative;background:#517caf;height:36.25px;padding-top:8.75px}
+.s_t h2.t{margin:auto;width:197px;height:27.5px;}
+
+.customBackButton{position:absolute;left:5px;top:7.5px;width:50px;line-height:30px;height:30px;text-align:center;border:0px;background:#FFF;color:#517caf;display:none;}
+
+/* header login layer */
+.l_f{position:relative;background:#e9e9e9;height:40px;border-bottom:1px solid #b0b1b4;}
+.l_f .b_l{display:table; position:absolute;right:0px;top:0px;margin-top:6px;}
+.l_f .b_l li{display:table-cell;height:27px;line-height:27px;padding-right:5px;}
+.l_f .b_l li a{display:block;height:27px;line-height:27px;font-size:14px;border:1px solid #bbbbbb;background:#fefefe;color:#888888;text-align:center;}
+.l_f .b_l li.login_btn{width:60px;}
+.l_f .b_l li.reg_btn{width:70px;}
+.l_f .b_l li.logout_btn{width:80px;}
+.l_f .b_l li.info_btn{width:100px;}
+
+/* main */
+.l_t{background:#f4f4f4;border-bottom:1px solid #cccccc;height:180px;padding-left:15px;}
+.l_t h2.ct{margin-top:25px;margin-bottom:15px;font-size:18px;}
+
+.l_l{padding-right:120px;}
+.l_l li{height:30px;margin-bottom:10px;}
+.l_l input{width:100%;height:30px;border:1px solid #bbbbbb;text-indent:10px;}
+.l_l li.f a{color:#517caf;font-weight:bold;padding-top:5px;}
+	
+.l_t .ia, .r_t .ia{position:relative;}
+.l_t .ac, .r_t .ac{position:absolute;top:0px;right:0px;width:105px;}
+.l_t .ac span, .r_t .ac span{display:block;height:30px;line-height:30px;margin-bottom:10px;}
+.l_t .ac span.i, .r_t .ac span.i{color:#8f8f8f}
+
+.r_t{padding-left:15px;padding-right:15px;}
+.r_t h2.rt{margin-top:25px;font-size:18px;}
+.r_t .rt_s{font-size:13px;margin-top:5px;color:#8c8c8c}
+
+.r_l{padding-right:95px;}
+.r_l input{width:100%;height:30px;}
+
+.l_l li.r{margin-top:10px;margin-bottom:40px;}/*registry li input margin*/
+
+#submit1_btn{background:url(/images/common/btn/m_btn_blue30.png);width:60px;height:30px;margin-top:1px;border:0;color:#FFF;}
+#submit2_btn{background:url(/images/common/btn/m_btn_yellow30.png);width:60px;height:30px;margin-top:1px;border:1px solid #bbbbbb;color:#000;font-weight:bold;font-size:12px;}
+
+	
+/*service content div : r_t*/
+.s_e_ctn{border-bottom:1px solid #cccccc;}
+.s_e_t{position:relative;height:28px;line-height:28px;margin-top:10px;font-size:15px;color:#517caf;font-weight:bold;text-indent:5px;}
+.s_e_t .link{position:absolute;right:5px;height:28px;}
+.s_e_t .link a.info{display:block;width:108px;height:28px;line-height:28px;padding-right:5px;color:#FFF;font-size:12px;text-align:center;background:url(/images/common/btn/m_btn_blue28.png);}
+
+.s_e_c1{}
+.s_e_c1 p{float:left;width:85%;margin:auto;margin-top:10px;padding-left:15px;text-align:center;}
+.s_e_c1 p span{float:left;font-size:14px;padding-bottom:10px;}
+.s_e_c1 p .l{color:#6f6f6f}
+.s_e_c1 p .v{padding-right:25px;}
+
+.s_e_c2{clear:both;}
+.graph1{display:table;width:100%;position:relative;height:16px;margin-top:10px;}
+.graph1 span{display:table-cell;height:10px;text-align:center;font-size:9px;color:#FFF}
+.graph1 span.pt{display:block;position:absolute;top:18px;left:0px;width:11px;height:6px;background:url(http://m.dietbible.net/images/common/service/graph_pt1.png) no-repeat;text-indent:-999em;}
+
+.graph1 .g1{width:20%;background:#9AC9F0;}
+.graph1 .g2{width:20%;background:#84a8c0;}
+.graph1 .g3{width:20%;background:#6f91ab;}
+.graph1 .g4{width:20%;background:#506b8d;}
+.graph1 .g5{width:20%;background:#395376;}
+
+.graph1_r{width:80%;padding:20px 0 20px 0;margin:auto;text-align:center;color:#8c8c8c}
+.graph1_r .bd{color:#000;}
+
+.graph2{display:table;width:100%;position:relative;margin-top:10px;margin-bottom:10px;}
+.graph2 span{display:table-cell;height:20px;line-height:20pxx}
+.graph2 span.g{width:35%;}
+.graph2 span.v{text-indent:10px;font-size:12px;width:65%;color:#6f6f6f}
+.graph2 span.v em{text-indent:10px;font-size:12px;color:#000;font-weight:bold}
+.graph2 span b{text-indent:-999em;display:block;float:right;}
+.graph2 span.g1 b{width:80%;height:15px;background:#84a8c0;}
+.graph2 span.g2 b{width:50%;height:15px;background:#61809d;}
+.graph2 span.g3 b{width:30%;height:15px;background:#395376;}
+
+.t_result{width:90%;margin:auto;margin-top:10px;margin-bottom:20px;text-align:justify;font-size:13px;}
+
+/* create account */
+.a_c{padding-right:15px;padding-bottom:30px;}
+.a_c .a_t{position:relative;height:28px;line-height:28px;margin-top:10px;font-size:14px;color:#517caf;}
+.a_c input[type=text],.a_c input[type=password],.a_c input[type=submit]{width:100%;height:30px;border:1px solid #bbbbbb;text-indent:10px;}
+input[type=number]{width:100%;height:30px;border:1px solid #bbbbbb;text-indent:10px;}
+.a_c .i_l{margin-top:10px;}
+.a_c .i_l li{position:relative;margin-bottom:20px;}
+.a_c .i_l li .hide{display:none;}
+.a_c .i_l li p{position:absolute;left:0px;top:32px; text-indent:10px;height:20px;line-height:20px;font-size:12px;}
+.a_c .i_l li p.r{color:red}
+.a_c .i_l li p.g{color:#21981c}
+.a_c .ag{border:1px solid #bbbbbb;background:#f4f4f4;padding:5px;}
+.a_c .ag_t1{font-size:12px;color:#8f8f8f;font-weight:bold;margin:5px 0;text-align:center;}
+.a_c #c_submit1{background:url(/images/common/btn/m_btn_yellow30.png);height:30px;border:1px solid #bbb;color:#000;}
+.a_c .b_btn{display:block;height:28px;line-height:28px;color:#FFF;font-size:12px;text-align:center;background:url(/images/common/btn/m_btn_blue28.png);}
+	
+.c_secede_btn{display:block;width:100%;margin-top:20px;background:url(/images/common/btn/m_btn_red30.png);height:30px;border:1px solid #bbb;color:#000;}
+
+/* complete */
+.a_c_c{height:60px;line-height:60px;background:#f4f4f4;text-align:center;}
+.a_t_s{font-size:12px;color:#797979}/*title sub*/
+#p_submit1{background:url(/images/common/btn/m_btn_blue30.png);height:30px;color:#FFF;}
+
+
+/* info */
+.i_l .c_btn{position:absolute;right:0px;top:2px;display:block;width:25%;line-height:28px;color:#FFF;font-size:12px;text-align:center;background:url(/images/common/btn/m_btn_blue30.png);}
+
+.i_l .act ul li{margin:0;margin-top:5px;text-indent:15px;font-size:12px;}
+
+/*
+-webkit-transform: translateX(-100%); -webkit-transform-style: preserve-3d; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; -webkit-transition: 0ms; 
+
+-webkit-transform: translateX(0%); -webkit-transform-style: preserve-3d; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; -webkit-transition: 500ms;
+
+-webkit-transform: translateX(100%); -webkit-transform-style: preserve-3d; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; -webkit-transition: 500ms;
+*/
+
+/* create account */
+
+.i_l .a_t{position:relative;height:28px;line-height:28px;margin-top:10px;font-size:14px;color:#517caf;}
+.i_l input[type=text],.a_c input[type=password],.a_c input[type=submit]{width:100%;height:30px;border:1px solid #bbbbbb;text-indent:10px;}
+.i_l{margin-top:10px;}
+.i_l li{position:relative;margin-bottom:20px;}
+.i_l li .hide{display:none;}
+.i_l li p{position:absolute;left:0px;top:32px; text-indent:10px;height:20px;line-height:20px;font-size:12px;}
+.i_l li p.r{color:red}
+.i_l li p.g{color:#21981c}
+
+#eResult{display:block;margin:0 auto;width:100px;height:35px;line-height:35px;background:#517caf;color:#fff;margin-top:10px;margin-bottom:10px;text-align:center;border-radius:.5em .5em;border:0 none;font-size:16px;font-weight:bold;}
+
+#kcaltable{border-collapse:collapse;border:1px solid #BABABA;border-radius:.5em .5em;width:100%;margin-top:10px;margin-bottom:10px;}
+#kcaltable tr{border-bottom:1px solid #BABABA}
+#kcaltable .kcalth1{width:29%;border-right:1px solid #BABABA;padding-top:5px;padding-bottom:5px;font-size:12px;}
+#kcaltable .kcaltd1{width:21%;border-right:1px solid #BABABA;text-indent:10px;}
+#kcaltable .kcalth2{width:29%;border-right:1px solid #BABABA;font-size:12px;}
+#kcaltable .kcaltd2{width:21%;text-indent:5px;}
+
+/*
+table tr:last-child td:first-child {
+    -moz-border-radius-bottomleft:10px;
+    -webkit-border-bottom-left-radius:10px;
+    border-bottom-left-radius:10px
+}
+
+table tr:last-child td:last-child {
+    -moz-border-radius-bottomright:10px;
+    -webkit-border-bottom-right-radius:10px;
+    border-bottom-right-radius:10px
+}
+*/
+</style>
+<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+<script src="http://bignus.cafe24.com/jindo.min.js"></script>
+<script src="http://bignus.cafe24.com/jindo_mobile_component.js"></script>
+<script src="kakao-link.js"></script>
+<script>
+    
+    //window.addEventListener("popstate", popData, false);
+    
+    $(function(){
+    	requestDefaultPage();
+    });
+    
+    /*
+    var viewState = false;
+    function popData(event){
+        
+        var tempHash = location.hash;
+        
+        if (tempHash=="#eResult")
+        {
+            requestResultPage();
+        } else {
+            
+        }
+    }
+    */
+    
+    function requestDefaultPage()
+    {
+        $(".customBackButton").hide();
+        $.get("e2.html",function(result){
+            $("#content").html(result);
+        });
+    }
+    
+    var resultValues = {};
+    function requestResultPage()
+    {
+        $(".customBackButton").show();
+        
+        if (isNaN(parseInt($("#mi_weightc").val()))){
+            requestDefaultPage();
+            return;
+        }
+        
+        cal();
+        
+        $.get("e1.html",function(result){
+            $("#content").html(result);
+            
+            $("#aimi_t_result").append(resultStringFn());
+            
+            innerContent();
+            window.scrollTo(0, 1);
+        });
+    }
+    
+   function innerContent()
+        {
+            if (resultValues.sex==1) {
+                $("#content #aimi_sex").text("ë¨ì");
+            } else {
+                $("#content #aimi_sex").text("ì¬ì");
+            }
+            
+            $("#content #aimi_height").text(resultValues.height);
+            $("#content #aimi_weight").text(resultValues.weight);
+            $("#content #aimi_age").text(resultValues.age);
+            
+            if (resultValues.act==1) {
+                $("#content #aimi_act").text("ì¬í íë");
+            } else if (resultValues.act==2) {
+                $("#content #aimi_act").text("ê°ë²¼ì´ íë");  
+            } else if (resultValues.act==3) {
+                $("#content #aimi_act").text("ë³´íµ íë"); 
+            } else if (resultValues.act==4) {
+                $("#content #aimi_act").text("ê°ë²¼ì´ íë");
+            } else if (resultValues.act==5) {
+                $("#content #aimi_act").text("íë ìí¨");
+            }
+            
+            $("#aimi_bmi").text(resultValues.bmi);
+            $("#aimi_bmiResult").text(resultValues.bmiResult);
+            $("#graph1_pt").css("left",resultValues.bmiX+"%");
+            
+            $("#aimi_tkcal").text(resultValues.bmrResult);
+            $("#aimi_kcal1").text(resultValues.bmr);
+            $("#aimi_kcal2").text(resultValues.digestion);
+            $("#aimi_kcal3").text(resultValues.bmrActResult);
+            
+            $("#aimi_kcal1_width").css("width",resultValues.kcal1_width+"%");
+            $("#aimi_kcal2_width").css("width",resultValues.kcal2_width+"%");
+            $("#aimi_kcal3_width").css("width",resultValues.kcal3_width+"%");
+            
+            $("#raimi_weight").text(resultValues.weight);
+            $("#raimi_bmi").text(resultValues.bmi);
+            $("#raimi_bmiResult").text(resultValues.bmiResult);
+            $("#raimi_kg1").text(resultValues.kg1);
+            $("#raimi_kg2").text(resultValues.kg2);	
+            $("#raimi_kg3").text(resultValues.kg3);
+            
+            $("#burnResult").text(resultValues.burnResult*-1);
+            
+            $("#fe").html(resultValues.s+":"+resultValues.e);
+            
+            
+            
+            $("#goal_date").text(resultValues.goal_date);
+            $("#goal_burn").text(resultValues.goal_burn*-1);
+            
+            $("#goal_date1").text(resultValues.goal_date);
+            $("#goal_burn1").text(resultValues.goal_burn*-1);
+            
+            $("#rs").text(resultValues.sResult);
+            $("#re").text(resultValues.eResult);
+            
+            $("#rs1").text(resultValues.sResult);
+            $("#rs2").text(resultValues.sResult);
+            $("#re2").text(resultValues.bmrResult-resultValues.eResult);
+            
+            var _eResult = resultValues.bmrResult - resultValues.bmr;
+            _eResult = 10-getRound( _eResult/resultValues.burnResult*10, 0);
+            
+            $("#slider_px1").css("left",_eResult*10+"%");
+            
+            oSlider.setValue(resultValues.s);
+            
+            if (resultValues.sex==1) {
+            	$("#isGirl1").hide();
+            	$("#isGirl2").hide();
+            	$("#isGirl3").html("Kgìëë¤.");
+            } else {
+            	$("#isGirl3").html("Kgì´ê³ ,");
+            }
+        }
+        
+        function resultStringFn()
+        {
+            var returnString = "";
+            if (resultValues.bmiResult == "ì ì²´ì¤") {
+					returnString = "ì ìì²´ì¤ì¸ë° ì²´ì§ë°©ì ì¸¡ì í´ë³´ë©´ ë¹ë§ì¼ë¡ ê²°ê³¼ê° ëì¤ë ë¶, ê²ì ë§ë¼ë³´ì´ëë° ë°¥ì ì¡°ê¸ë§ ë¨¹ì´ë ë°°ê° ë¶ë£© ëì¤ë ë³µë¶ë¹ë§ì¸ ë¶, ë§ë¼ë³´ì´ê³  ê°ë²¼ìë³´ì´ë ê·¼ì¡ëì´ ëë¬´ ì ì´ ê¸°ì´ì´ ìë ë¶, ì²´ì¤ì¡°ì ì ì¤ë¡ì§ ë¤ì´ì´í¸(ìì¬ì¡°ì )ë¡ë§ í´ìë ë¶, ì´ë° ë¶ë¤ì´ ë³´íµ ë§ë¥¸ ë¹ë§ìëë¤.  \
+<br /><br /> \
+ë§ë¥¸ ë¹ë§ì ê±´ê°ì ë§¤ì° ìì¢ì ìíìëë¤. ì§ë°©ê°, ê³ ì§íì¦ ë± ëì¬ ì¦íêµ°ì ìíì´ ëì¼ë ê²ì¼ë¡ë ë§ë¼ë³´ì´ê¸°ì ë°©ì¹íë¤ê° ë³ì í¤ì°ë ê²½ì°ê° ë§ìµëë¤. ì¤ë ìì¬ì¡°ì  ë¤ì´ì´í¸ë¡ ê·¼ì¡ëì´ ì¤ì´ë  ê²ì ë¬¼ë¡ , ë¼ì ë°ëë ë®ì ì°¨í ê³¨ë¤ê³µì¦ì ê±¸ë¦¬ê¸°ë ì½ëë¤. ë§ë¥¸ ë¹ë§ì¸ ë¶ì´ ìì ì íê±°ë ìì¬ëì´ ëê²ëë©´ ìì£¼ ë¹ ë¥¸ ìëë¡ ì²´ì¤ì´ ë¶ì´ê°ëë¤. ì²´ì¤ ì¦ê° ë°©ì§ì¥ì¹ì¸ ê·¼ì¡ì´ ì¤ì´ ì¡°ê¸ë§ ë°©ì¬í´ë ì²´ì¤ì´ ë¹¨ë¦¬ ëê² ëë ê²ì´ì£ . \
+<br /><br /> \
+ë§ë¥¸ë¹ë§ì¸ ë¶ë¤ì¼ìë¡ ì²´ì¤ì ëí´ ë¯¼ê°í©ëë¤. ì¤íë ¤ íì¤ì²´ì¤ë³´ë¤ ì ì²´ì¤ì¸ë°ë ë§ì¡±í  ìê° ìì£ . ì²´ì¤ì ì°ì°íê¸° ë³´ë¤ë ì ì ì ê³¨ê³ ë£¨ ìì§ì¬ì£¼ë ì´ëì í´ì ë©ì§ ë°ëë¼ì¸ì¼ë¡ ë¤ë¬ì¼ë©´ì ììí ì²´ì±ë¶ì ë³íë¥¼ ê¾í©ëë¤. ì´ëê³¼ ììì­ì·¨ì ì ê²½ì°ë©´ì ê±´ê°í ë¤ì´ì´í¸ë¥¼ íë©´ ëª¸ì ì²´ì±ë¶ì´ ê· íì¡íê² ë°ë¬íë©´ì ì¤íë ¤ ì²´ì¤ì´ ë ìë ììµëë¤. ê·¼ì¡ì´ ì±ì¥í´ ì²´ì¤ì ëì§ë§ ë¶í¼ê°í¬ê³  ë¬´ê²ê° ê°ë²¼ì´ ì²´ì§ë°©ì ë¶í´ëì´ ì¸ì´ì¦ê° ì¤ì´ë­ëë¤. ê·¸ë¬ê¸° ìí´ìë ì²´ì¤ ë³´ë¤ë ì²´ì§ë°©ë¥ ì, ì²´ì¤ê³ ë³´ë¤ ì²´ì¡°ì±ê³ì ë§ì ê·ë¥¼ ê¸°ì¸ì¬ì¼ í©ëë¤. ì¤ìë¡ ì¸ì´ì¦ë¥¼ ì¸¡ì íê±°ë ì²´ì§ë°©ì ë³íë¥¼ ê¸°ë¡íë ê²ì´ ë°ëì§í©ëë¤. \
+<br /><br /> \
+ë§ë¥¸ ë¹ë§ì¸ ë¶ë¤ì ëë¤ì ì ì¹¼ë¡ë¦¬ ìì´ìë²ì í©ëë¤. ê·¸ë¡ì¸í´ ê·¼ìì¤ì ì´ëíê³  ìì¼ë¯ë¡ ë¨ë°±ì§ì´ íë¶í ìì¬ë¥¼ í´ì¤ì¼ í©ëë¤. ëí ê·¸ê° ì ì¹¼ë¡ë¦¬ ë¤ì´ì´í¸ë¡ ìì¬ëì´ ì¤ì´ ì, ìì¥, ëì¥ ê¸°ë¥ì´ ì íë ìíìëë¤. ì¡°ê¸ì© ì´ë ¤ë² ëë  ì­ì·¨íê³  ë°¥ì íë¯¸ë°¥ì, ì°¬ì¼ë¡ í´ì´ì ì±ìì ì­ì·¨ë¥¼ ëë¦½ëë¤. ì±ìì ì­ì·¨ê° ëë©´ ë°°ë³ì´ íë°í´ì§ëë¤. ìì¬ëì ê°ìê¸° ëë¦¬ì§ ë§ê³  ì°¨ì¸° ëë ¤ëê°ëë¤. ë§ë¥¸ ë¹ë§ì¸ ë¶ë¤ì ë°¥ë³´ë¤ ë¹µì ì¢ìíë ê²½í¥ì´ ììµëë¤. ë¹µë ëìì§ ìì¼ë ê°ê³µì´ë í° ë°ê°ë£¨ì ìê¸ì ë²ë¬´ë¦¬ê³  ê±°ê¸°ì ë²í°ë¥¼ í¨ê» ë°°í©í´ êµ¬ì´ ë¹µì´ ë§ìµëë¤. ììì ë¶ê· íì ì´ëíë¯ë¡ ë°¥ì¼ë¡ ë°ê¿ë³´ìë ê²ì´ ì¢ê² ìµëë¤.";
+					 	
+        } else if (resultValues.bmiResult == "ì ìì²´ì¤") {
+					returnString = "ì ìì²´ì¤ì´ê³ , ì ì ì²´ì±ë¶ë¥ ì ê°ì§ê³  ìë¤ë©´ ì¢ì ìíìµê´ì ì¤ë ì ì§íì  ë¶ì¼ ê²ìëë¤. í¹ë³í ì´ì´ ì°ì§ë ììëë°ë ê¾¸ì¤í ì´ëê³¼ ìì´ìë²ì íë ë¶ë¤ì ëê°ì§ ëª©ì ì ê°ì§ ë¶ë¤ì¼ ê²ìëë¤. ì²«ì§¸ë¡ ë¯¸ì©ì ì¸ ì¸¡ë©´ììì ëª¸ê´ë¦¬ë¥¼ íë ë¶ë¤. ì¦, ë©ì§ ë¼ì¸ì ëª¸ë§¤, ë©ì§ ê°ì´ê³¼ çì ë³µê·¼ì¼ë¡ ëª¸ì ë¤ë¬ê¸° ìí´ ì´ëê³¼ ìì¬ì¡°ì ì íë ë¶, ë ë²ì§¸ë¡ ê±´ê°ê´ë¦¬ë¥¼ ìí´ ê¾¸ì¤í ì´ëíë ë¶. ì¦, ìíì íë ¥, ì±ì¸ë³ ìë°©, ë¸íë°©ì§ì ì¥ìë¥¼ ìí´ ì´ëê³¼ ìì¬ì¡°ì ì íë ë¶ë¤ìëë¤. \
+<br /><br /> \
+ì´ë° ë¶ë¤ì ì²´ì¤ê³¼ ê±´ê°ì ì¤ë ì ì§íë ê²ì ëª©íë¡ ì¡ìì¼ í©ëë¤. ëì´ 25ì¸ê° ì§ëë©´ì ì°ë¦¬ ëª¸ì ê·¼ì¡ëì ììí ì¤ì´ë¤ë¯ë¡ ê±·ê¸°ì ê°ì ì ì°ì ì´ëë§ íììë ìëê³  ì ì í ìì ê·¼ë ¥ì´ëì ê¼­ ë³íí´ì¤ì¼ í©ëë¤. ëí ì ì°ì±ì´ ë¨ì´ì§ ì°ë ¤ê° ìì¼ë ìê°, ê¸°ê³µ ë± ì ì°ì±ê³¼ íìë¥¼ í¨ê» ì»ì ì ìë ì´ëì í¨ê» í  íìê° ììµëë¤. ê·¸ë¦¬ê³  ì´ë° ì´ëë¤ê³¼ í¨ê» ê±´ê°í ìì¬ìµê´ì ìííí´ì¼ í©ëë¤. ë¬¼ë¡ , ë¯¸ì©ì ì¸ ì¸¡ë©´ìì 'ê³¼í'ì´ëê³¼ 'ê³¼í'ìì¬ë¥¼íì¬ ëª¸ì ë¶íë¦¬ë ê²ì ìì ì ì·¨í¥ìëë¤. \
+<br /><br /> \
+ëª¸ì§± ë§ë¤ê¸° ìíë ë¶ : ìì ì ëª©íì ë§ë ì¨ì´í¸ íë¡ê·¸ë¨ì ë°ë¼íë©´ ë©ëë¤. ìì¤ì ë¤ìí ì¨ì´í¸ ìì ê³¼ ê´ë ¨ ì¬ì´í¸ë¤ì ì´ì©íìë©´ ë©ëë¤. í¹ì ì¹´íì ë°ì¼ë¦¬íë¡ê·¸ë¨ì ê³ ì¤ëì¼ë¡ ë°ë¼íìë©´ ë©ëë¤. ì´ ê²½ì° íí ê³ ë¨ë°± + í­ì°í ìë¨ì ì±ê²¨ì£¼ìì¼ í©ëë¤. \
+<br /><br /> \
+ê±´ê°ì ìí´ ì´ëíê³ ì íë ë¶ : ì£¼ 3~4ì¼ íë£¨ 30ë¶~1ìê°ì ê·¼ë ¥ì´ëê³¼ ì ì°ì ì´ëì íê³  íëëëë¡ ëª¸ì ìì£¼ ìì§ì´ê³  ì¤í¸ë ì¹­ë ìì£¼ í©ëë¤. ìê°, ê¸°ê³µ, ê±·ê¸°ì ê°ì ìíì ì´ëì ì£¼ ì´ëì¼ë¡ í©ëë¤. ê·¸ë¦¬ê³  ê·ì¹ì ì¸ ìì¬, ê³¼ìì íì§ ë§ê³  ë¨ë°±ì§ê³¼ í­ì°í ìë¨ì ì±ê¸°ìëê² ì¢ìµëë¤.";
+			} else {
+					returnString = "ê³¼ì²´ì¤ì´ë í¤ì ë¹í´ ëª¸ë¬´ê²ê° ë§ì´ ëê°ë ê²½ì°ìëë¤. ì¨ì´í¸í¸ë ì´ëì ì¤ë í ë¶ì´ë íë¡ ì´ëì ìë¤ì ì²´êµ¬ì ë¹í´ ì²´ì¤ì´ ë§ì´ ëê°ëë¤. ê·¸ ì´ì ë ê·¼ì¡ì´ ë§ê¸° ëë¬¸ì´ì£ . ê·¸ë° ê²½ì°ë ê³¼ì²´ì¤ì´ë¼ í  ì ìì´ë ë¹ë§ì´ë¼ê³  íì§ë ììµëë¤. ê·¸ë¬ë, ê·¼ì¡ì´ ì ê³  ì²´ì§ë°©ì´ ë§ì ê³¼ì²´ì¤ì ê²½ì° ë¹ë§ì´ë¼ê³  ë¶ë¦¬ì°ì£ . ëë¶ë¶ ì´ëì ê²ìë¦¬íë ë¶ë¤ì ê²½ì° ê³¼ì²´ì¤ì´ë©´ ë¹ë§ì¼ ê²ìëë¤. ê·¸ë¬ë¯ë¡ ì²´ì¤ê³ë¥¼ íµí ë¹ë§ë ê²ì¬ë³´ë¤ ì²´ì¡°ì±ê³ë¥¼ íµí ë¹ë§ë ê²ì¬ë¥¼ ì¶ì²í©ëë¤. \
+<br /><br /> \
+ë¹ë§ëê° ê·¸ë¦¬ ì¬íì§ ìì ì¤ëë¹ë§ì ê°ì¥ ë¤ì´ì´í¸ ìêµ¬ê° ë¶íëë¤. ì¡°ê¸ë§ ë¸ë ¥íë©´ ì ì ì²´ì¤ì´ ë  ì ìì¼ëê¹ì^^ ê³ ëë¹ë§ì¸ ë¶ì ì²´ì¤ì´ë¼ë ì¤ìì¼ë©´ ì¢ê² ë¤ê³  ìê°íì§ë§ ì¤ëë¹ë§ì¸ ë¶ë¤ì ì²´ì¤ì¡°ì ê³¼ ì²´íê°ì ì ëí ìêµ¬ê° í¨ê» ììµëë¤. ê³ ëë¹ë§ì ê²½ì°ì ë§ì°¬ê°ì§ë¡ ë¹ë§ì ìì¸ì íìíê³ , ê°ì í  ë¶ë¶ì ê°ì íê³ , ì´ëê³¼ ìì¬ì¡°ì ì í©ìë¤. \
+<br /><br /> \
+ë¹ë§ì´ ì¬í ìë¡ ê³¼ì, í­ìì íìë ë¶ë¤ì´ ë§ì¼ë©° ì¤ë ëì ììµê´ì¼ë¡ ì²´ë´ì ë¹ëì¬ê° ëë¹ ì§ ê²½ì°ê° ë§ìµëë¤. ë¹ëì¬ê° ë¶ìì í´ì§ë©´ ê·ì¹ì ì´ê³  ì ëì ìì¬ë¥¼ íë ê²ì´ ëì± íë­ëë¤. ê·¸ë¬ë¯ë¡ ì¡°ê¸ì© ìì£¼ ë¨¹ì¼ë©° ì í¬ê¸°ë¥¼ ì¤ì´ê³  íë¹ì ìì ìí¬ íìê° ììµëë¤. ë°°ë¶ë¥´ì§ ìì ì ëë¡ ì¸ë¼ ìì¬ë¥¼ ì±ê²¨ ëìê³ , ìì¬ 3ìê° í ê°ë¨í ê°ìì ì±ê²¨ë³´ì¸ì. íê¸°ê° ë ì§ê³  ì íë¹ ì¦ì¸ë ëí êº¼ìì.";
+            }
+            return returnString;
+        }
+        
+        function cal()
+    		{
+    			var div = parseInt( $(".mi_div:checked").val());
+    			var weight = parseInt($("#mi_weightc").val());
+				var height = parseInt($("#mi_heightc").val());
+				var sex = parseInt( $(".mi_sex:checked").val());
+				var age = parseInt( $("#mi_age").val());
+				var goal_burn = parseInt( $("#mi_goal_burn").val());
+				var goal_date = parseInt( $("#mi_goal_date").val());
+				var s = parseInt( $("#mi_s").val());
+				var e = parseInt( $("#mi_e").val());
+				var act = parseInt( $(".mi_act:checked").val());
+				
+				resultValues.div = div;
+				resultValues.weight = weight;
+				resultValues.height = height;
+				resultValues.sex = sex;
+				resultValues.age = age;
+				
+				resultValues.goal_burn = weight-goal_burn;
+				resultValues.goal_date = goal_date;
+				resultValues.s = s;
+				resultValues.e = e;
+				resultValues.act = act;
+				
+				getBMI();
+				getBMR();
+				getBurn();
+				getGoalResult();
+				console.log(resultValues);
+				
+    		}
+    		
+    		var _0xfd7f=["\x73\x52\x65\x73\x75\x6C\x74","\x6C\x65\x6E\x67\x74\x68","\x77\x65\x69\x67\x68\x74","\x72\x20\x3A\x20","\x6C\x6F\x67","\x72\x31\x20\x3A\x20","\uBD84","\x68\x74\x6D\x6C","\x2E\x69\x63\x3A\x65\x71\x28","\x29","\x62\x75\x72\x6E\x52\x65\x73\x75\x6C\x74","\x73","\x65\x52\x65\x73\x75\x6C\x74","\x65","\x67\x6F\x61\x6C\x5F\x62\x75\x72\x6E","\x67\x6F\x61\x6C\x5F\x64\x61\x74\x65","\x64\x69\x76","\x73\x65\x78","\x62\x6D\x72","\x68\x65\x69\x67\x68\x74","\x61\x67\x65","\x61\x63\x74","\x62\x6D\x72\x41\x63\x74","\x62\x6D\x72\x41\x63\x74\x52\x65\x73\x75\x6C\x74","\x64\x69\x67\x65\x73\x74\x69\x6F\x6E","\x62\x6D\x72\x52\x65\x73\x75\x6C\x74","\x72\x6F\x75\x6E\x64","\x6B\x63\x61\x6C\x31\x5F\x77\x69\x64\x74\x68","\x6B\x63\x61\x6C\x32\x5F\x77\x69\x64\x74\x68","\x6B\x63\x61\x6C\x33\x5F\x77\x69\x64\x74\x68","\x6B\x67\x31","\x6B\x67\x32","\x6B\x67\x33","\x62\x69\x6D\x61\x6E\x64\x6F","\x62\x6D\x69","\x62\x6D\x69\x58","","\uC800\uCCB4\uC911","\uC815\uC0C1\uCCB4\uC911","\uACFC\uCCB4\uC911","\uACBD\uB3C4\uBE44\uB9CC","\uC911\uB4F1\uB3C4\uBE44\uB9CC","\x62\x6D\x69\x52\x65\x73\x75\x6C\x74"];function getKcalSport(){var _0xb2c8x2=resultValues[_0xfd7f[0]];var _0xb2c8x3=[1.0,1.3,1.5,1.8,2.0,3.0,3.5,4.3,6.0,6.5,7.0,9.8,6.5,8.0,7.0,7.5,2.5,2.3,4.0,6.0,2.3,2.5,3.3,4.0,3.0,3.5,4.3,8.0,5.0,7.8,8.8,12.3,5.5,7.8,7.8,7.3,10.0,4.8,6.0,9.8,4.8,7.0,9.8,14.0,7.0,10.0,12.0];for(var _0xb2c8x4=0;_0xb2c8x4<_0xb2c8x3[_0xfd7f[1]];_0xb2c8x4++){var _0xb2c8x5=resultValues[_0xfd7f[2]]*_0xb2c8x3[_0xb2c8x4]/60;if(_0xb2c8x4==7){console[_0xfd7f[4]](_0xfd7f[3]+_0xb2c8x5);console[_0xfd7f[4]](_0xfd7f[5]+_0xb2c8x2/_0xb2c8x5);} ;var _0xb2c8x6=_0xb2c8x2/_0xb2c8x5;$(_0xfd7f[8]+_0xb2c8x4+_0xfd7f[9])[_0xfd7f[7]](getRound(_0xb2c8x6,0)+_0xfd7f[6]);} ;} ;function getGoalResult(){resultValues[_0xfd7f[0]]=resultValues[_0xfd7f[10]]*(resultValues[_0xfd7f[11]]*0.1);resultValues[_0xfd7f[0]]=getRound(resultValues[_0xfd7f[0]],1);resultValues[_0xfd7f[12]]=resultValues[_0xfd7f[10]]*(resultValues[_0xfd7f[13]]*0.1);resultValues[_0xfd7f[12]]=getRound(resultValues[_0xfd7f[12]],1);} ;function getBurn(){resultValues[_0xfd7f[10]]=((resultValues[_0xfd7f[14]]*7200)/resultValues[_0xfd7f[15]]);} ;function getBMR(){if(resultValues[_0xfd7f[16]]==1){if(resultValues[_0xfd7f[17]]==1){resultValues[_0xfd7f[18]]=66+(13.75*resultValues[_0xfd7f[2]])+(5.0*resultValues[_0xfd7f[19]])-(6.76*resultValues[_0xfd7f[20]]);} else {resultValues[_0xfd7f[18]]=655+(9.56*resultValues[_0xfd7f[2]])+(1.85*resultValues[_0xfd7f[19]])-(4.68*resultValues[_0xfd7f[20]]);} ;} else {if(resultValues[_0xfd7f[17]]==1){resultValues[_0xfd7f[18]]=5+(10*resultValues[_0xfd7f[2]])+(6.25*resultValues[_0xfd7f[19]])-(5*resultValues[_0xfd7f[20]]);} else {resultValues[_0xfd7f[18]]=-161+(10*resultValues[_0xfd7f[2]])+(6.25*resultValues[_0xfd7f[19]])-(5*resultValues[_0xfd7f[20]]);} ;} ;resultValues[_0xfd7f[18]]=getRound(resultValues[_0xfd7f[18]],1);if(resultValues[_0xfd7f[21]]==5){resultValues[_0xfd7f[22]]=1.2*resultValues[_0xfd7f[18]];} else {if(resultValues[_0xfd7f[21]]==4){resultValues[_0xfd7f[22]]=1.375*resultValues[_0xfd7f[18]];} else {if(resultValues[_0xfd7f[21]]==3){resultValues[_0xfd7f[22]]=1.55*resultValues[_0xfd7f[18]];} else {if(resultValues[_0xfd7f[21]]==2){resultValues[_0xfd7f[22]]=1.725*resultValues[_0xfd7f[18]];} else {if(resultValues[_0xfd7f[21]]==1){resultValues[_0xfd7f[22]]=1.9*resultValues[_0xfd7f[18]];} ;} ;} ;} ;} ;resultValues[_0xfd7f[23]]=resultValues[_0xfd7f[22]]-resultValues[_0xfd7f[18]];resultValues[_0xfd7f[24]]=(resultValues[_0xfd7f[18]]+(resultValues[_0xfd7f[22]]-resultValues[_0xfd7f[18]]))/0.9*0.1;resultValues[_0xfd7f[25]]=resultValues[_0xfd7f[18]]+resultValues[_0xfd7f[23]]+resultValues[_0xfd7f[24]];resultValues[_0xfd7f[23]]=getRound(resultValues[_0xfd7f[23]],1);resultValues[_0xfd7f[24]]=getRound(resultValues[_0xfd7f[24]],1);resultValues[_0xfd7f[25]]=getRound(resultValues[_0xfd7f[25]],1);var _0xb2c8xa=100;var _0xb2c8xb=0;var _0xb2c8xc=0;var _0xb2c8xd=0;var _0xb2c8xe=0;var _0xb2c8xf=0;var _0xb2c8x10=0;_0xb2c8xe=0;_0xb2c8xb=(_0xb2c8xa*resultValues[_0xfd7f[18]]/resultValues[_0xfd7f[25]]);_0xb2c8xf=_0xb2c8xb;_0xb2c8xc=(_0xb2c8xa*resultValues[_0xfd7f[24]]/resultValues[_0xfd7f[25]]);_0xb2c8x10=_0xb2c8xf+_0xb2c8xc;_0xb2c8xd=_0xb2c8xa-_0xb2c8x10;kcalP1=Math[_0xfd7f[26]]((100*resultValues[_0xfd7f[18]]/resultValues[_0xfd7f[25]]));kcalP2=Math[_0xfd7f[26]]((100*resultValues[_0xfd7f[24]]/resultValues[_0xfd7f[25]]));kcalP3=Math[_0xfd7f[26]]((100*resultValues[_0xfd7f[23]]/resultValues[_0xfd7f[25]]));resultValues[_0xfd7f[27]]=_0xb2c8xb;resultValues[_0xfd7f[28]]=_0xb2c8xc;resultValues[_0xfd7f[29]]=_0xb2c8xd;var _0xb2c8x11=0;var _0xb2c8x12=0;var _0xb2c8x13=0;if(resultValues[_0xfd7f[17]]==1){_0xb2c8x11=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*22/10000;} else {_0xb2c8x11=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*21/10000;} ;if(resultValues[_0xfd7f[17]]==1){_0xb2c8x12=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*20/10000;} else {_0xb2c8x12=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*19/10000;} ;if(resultValues[_0xfd7f[17]]==1){_0xb2c8x13=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*18/10000;} else {_0xb2c8x13=resultValues[_0xfd7f[19]]*resultValues[_0xfd7f[19]]*17/10000;} ;resultValues[_0xfd7f[30]]=getRound(_0xb2c8x11,1);resultValues[_0xfd7f[31]]=getRound(_0xb2c8x12,1);resultValues[_0xfd7f[32]]=getRound(_0xb2c8x13,1);} ;function getBMI(){var _0xb2c8x15=resultValues[_0xfd7f[2]]/resultValues[_0xfd7f[19]]/resultValues[_0xfd7f[19]]*10000;_0xb2c8x15=getRound(_0xb2c8x15,1);resultValues[_0xfd7f[33]]=_0xb2c8x15;if(_0xb2c8x15<18.5){x=getRate(18.4,0,_0xb2c8x15);} else {if(_0xb2c8x15>=18.5&&_0xb2c8x15<23){x=20+getRate(22.9,18.5,_0xb2c8x15);} else {if(_0xb2c8x15>=23&&_0xb2c8x15<25){x=40+getRate(24.9,23,_0xb2c8x15);} else {if(_0xb2c8x15>=25&&_0xb2c8x15<30){x=60+getRate(29.9,25,_0xb2c8x15);} else {if(_0xb2c8x15>=30){x=80+getRate(40,30,_0xb2c8x15);} ;} ;} ;} ;} ;resultValues[_0xfd7f[34]]=_0xb2c8x15;resultValues[_0xfd7f[35]]=Math[_0xfd7f[26]](x);var _0xb2c8x16=_0xfd7f[36];if(_0xb2c8x15<18.5){_0xb2c8x16=_0xfd7f[37];} else {if(_0xb2c8x15>=18.5&&_0xb2c8x15<23){_0xb2c8x16=_0xfd7f[38];} else {if(_0xb2c8x15>=23&&_0xb2c8x15<25){_0xb2c8x16=_0xfd7f[39];} else {if(_0xb2c8x15>=25&&_0xb2c8x15<30){_0xb2c8x16=_0xfd7f[40];} else {if(_0xb2c8x15>=30){_0xb2c8x16=_0xfd7f[41];} ;} ;} ;} ;} ;resultValues[_0xfd7f[42]]=_0xb2c8x16;} ;
+    		
+    		function getRate(a,b,c) {//a : maximum, b : minimum, c : current
+				//22.9, 18.5, 18.5
+				// 3.4   /  3.4  
+				
+				return (c-b) / (a - b)  * 100 * 0.2;	
+			}
+    		
+    		// round í¨ì ( val = ê°, precision= ìì«ì  ìë¦¿ì) 
+			function getRound(val,precision) { 
+			  return (Math.round(val * Math.pow(10, precision)) / (Math.pow(10, precision)));
+			}
+			
+			function show1(param){
+						var tempY = $("body").scrollTop();
+						$("#"+param).css({
+								width:"100%",
+								height:$("body").height(),
+								background:"rgba(203, 203, 203,.7)"
+							}).find(".in").css({top:parseInt(tempY)+50+"px"}).end().show().click(function(){
+								$(this).hide();
+							});
+						}
+    
+</script>
+</head>
+
+<body>
+<!-- 
+<div class="overlay">
+	<div class="modal">
+		<div class="content" >
+		<div style="margin: 20px; background: #fff;TEXT-ALIGN: center; font-family: 'ëëê³ ë';  "> 
+		<br><br><br>
+		<p style="color: #fc3459;; font-size: 1.5em;"><strong>[ ë¤ì´ì´í¸í¡ ì¤í ë¦¬ ë³´ê¸° ]</strong><br />
+		<span style="color: #333333; font-size: 0.6em;">ë§¤ì¼ ì¹´ì¤ìì ë¤ì´ì´í¸ ë¹ë² ììì ë°ì¼ì¸ì! </span></p>
+		<p>&nbsp;</p>		  
+		<p style="font-size: 1.2em;color: #333333; ">ì´ë¥¼íë©´ ì´ë° ê²ë¤ì´ì£ !<br />
+		<span style="color: #666666; font-size: 0.8em;">(ì´ë¯¸ì§ë¥¼ í°ì¹íë©´ í´ë¹ ì¤í ë¦¬ë¡ GO GO!)</span></p>
+		<p>&nbsp;</p>
+        
+        
+		<p style="color: #0A9DED;font-size: 1.2em; font-weight: bold;">â  âë³ë¤ì ì§ì§ DIET ë¹ë²ë¤â â</p>
+		<A class=tx-link href="http://diettalk.kr" target=_blank><IMG width="100%" border="0" src="http://dn-l1-story.kakao.co.kr/dn/umxsA/hycfzijpc6/AKBsS197axOWx68gEWC3H1/img_l.jpg" /></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <p style="color: #0A9DED; font-size: 1.2em; font-weight: bold;">â  âì´ê³ í¨ì¨ BBEST ì´ëììâ â</p><br>
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ì¸ê¸° ì§±ì¸ ê³ ê°ë ì ì  ì´ë - ë²í¼ ì±ë¦°ì§!'</P>
+        <IMG width="100%" border="0" src="http://dn-l1-story.kakao.co.kr/dn/6o1Pb/hycmC6iXKV/1OekoESW4b4PFYYTwhaZGk/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ìëª¸ ì¼ì¼í¤ê¸° ìì´ ë³µê·¼ì! - íë­í¬ ì±ë¦°ì§'</P>
+        <IMG width="100%" border="0" src="http://dn-l1-story.kakao.co.kr/dn/b2S3UO/hycaMIsZIO/SyMRKKFgiGhdVmETvMkT5k/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ë¨ì¼ëì ì´ëì ê½ - ì¤ì¿¼í¸'</P>
+        <IMG width="100%" border="0" src="http://dn-l1-story.kakao.co.kr/dn/b6wLrB/hych3iRoVp/Q1hBjMNSZskGxR5evZUcw0/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ìì  ìì í ì íë¸ ëìì + í!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/bCRW0H/hycfh9ifJV/Lh6LF39BNdjh3221K0haTk/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+        <p style="color: #0A9DED; font-size: 1.2em; font-weight: bold;">â  âê±´ê° ë¤ì´ì´í¸ ìì´ íë¤!â â</p><br>
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ì²´ì§ë°©ì í¨ê³¼ì ì¼ë¡ íì°ë ë²!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/iRAAx/hych8xQfY3/fSRTzIRJkNS2Y2Nkd9sDP1/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'EAT CLEAN! - ì²­ì  ìì°ì!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/5kdCc/hych8dEJml/VZK5xPpaRZPSM7KUpbEotk/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <p style="color: #0A9DED; font-size: 1.2em; font-weight: bold;">â  âì¸ê¸°! íìì´ë ìì§¤ë¤!â â</p><br>
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ì¤ì¿¼í¸ê° ì ëë©´, ì´ì  ì í ì¤í ì¤ì¿¼í¸ë¥¼!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/brE14h/hyclvM2Rwz/qJqxi8T6t6gcKtk7qynBk0/img.gif"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+        <p style="color: #0A9DED; font-size: 1.2em; font-weight: bold;">â  âë¤í¡ë§ì ìì  ë¹ë² ì ì!â â</p><br>
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ì ë¬¸ ë¤ì´ì´í¸ ì¹´ì´ìë¬, ë¹íìµ ììì¬,<br>ë¤ì´ì´í¸ ì ë¬¸ìì ì§ì§ ë¤ì´ì´í¸ í!'</P>
+        <IMG width="100%" border="0" src="http://dn-l1-story.kakao.co.kr/dn/v1CSl/hycnHmd13b/Vtvn63yDwr5DJ4KEt9FNfK/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        
+         
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ìë¬ì¤ì ì¤ì  ë¤ì´ì´í¸ ë¸íì° ì ì!!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/d5Buv/hyclCL7UaI/1DglyKLs1hnRRQ2fsGxvx1/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <A class=tx-link href="http://diettalk.kr" target=_blank>
+        <P style="font-size: 1.1em;">'ì¬ë¬ë¶ë¤ì´ ê¶ê¸í´ íë ëíì¼!!'</P>
+        <IMG width="100%" border="0" src="http://dn-l0-story.kakao.co.kr/dn/5TkT2/hycklRvP1Q/owuhD5BdclPmZtZJmm25nK/img_l.jpg"></A>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+	  
+		<p style="font-size: 1.2em;color: #333333; "><strong>ì´ ëª¨ë  ììì ë¤í¡íëë¡!</strong><br />ë´ ììì ìµê³ ì ë¤ì´ì´í¸ ì½ì¹ë¥¼!</p>
+		<p>&nbsp;</p>
+        <A class=tx-link href="http://diettalk.kr" target=_blank><p style="color: #fc3459;; font-size: 1.5em;"><strong>[ ë¤ì´ì´í¸í¡ ì¤í ë¦¬ ììë°ê¸°]</strong></p></a?
+		<p>&nbsp;</p>	
+		<p>&nbsp;</p>	
+
+			</div>
+		</div>
+		<!~~
+		<div style="height:10%;vertical-align:baseline;background:#e33c96;color:#fff;">
+			íë£¨ ëì ë³´ì´ì§ ìê¸°
+		</div>
+		~~>
+		<!~~
+		<div style="position:fixed;width:100%;height:25px;line-height:25px;bottom:0px;">
+			<div style="margin:0 15px;background:#e33c96;color:#FFF;font-weight:bold">
+				íë£¨ ëì ë³´ì´ì§ ìê¸°
+			</div>
+		</div>
+		~~>
+		<div class="cbtn">
+			<img src="http://nalthin.com/cal/close_button1.png" width="50px" height="50px"/>
+		</div>
+	</div>
+</div>
+ -->
+<script>
+
+function sizeFit() {
+	$(".overlay").height(document.documentElement.clientHeight);
+	var _width = $(".modal").outerWidth();
+	var _height = $(".modal").outerHeight();
+	$(".modal .content").css({"width":_width-30,"height":_height-50,"margin":"15px","margin-top":"25px","margin-bottom":"25px"});
+}
+
+$(function(){
+	
+	$(window).bind('resize', function () { 
+		//sizeFit();
+		//console.log(".modal + "+$(".modal").outerHeight());
+		//console.log(".modal + "+);
+	});
+	
+	//sizeFit();
+	
+	var blnCookie    = getCookie( "cale" );  
+    
+    if( !blnCookie ) {  
+       $(".overlay").show();
+    }
+
+	$(".cbtn").click(function(event){
+		$(".overlay").hide();
+		setCookieAt00("cale","close",1);
+		event.preventDefault();
+	});
+	
+	
+	
+});
+
+
+// ì¿ í¤ ê°ì ¸ì¤ê¸°
+function getCookie( name ) {
+   var nameOfCookie = name + "=";
+   var x = 0;
+   while ( x <= document.cookie.length )
+   {
+	   var y = (x+nameOfCookie.length);
+	   if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+		   if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+			   endOfCookie = document.cookie.length;
+		   return unescape( document.cookie.substring( y, endOfCookie ) );
+	   }
+	   x = document.cookie.indexOf( " ", x ) + 1;
+	   if ( x == 0 )
+		   break;
+   }
+   return "";
+}
+
+
+// 24ìê° ê¸°ì¤ ì¿ í¤ ì¤ì íê¸°
+// expiredays íì í´ë¦­í ìê°ê¹ì§ ì¿ í¤ ì¤ì 
+function setCookie( name, value, expiredays ) { 
+   var todayDate = new Date(); 
+   todayDate.setDate( todayDate.getDate() + expiredays ); 
+   document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+}
+
+// 00:00 ì ê¸°ì¤ ì¿ í¤ ì¤ì íê¸°
+// expiredays ì ìë²½  00:00:00 ê¹ì§ ì¿ í¤ ì¤ì 
+function setCookieAt00( name, value, expiredays ) { 
+	var todayDate = new Date(); 
+	todayDate = new Date(parseInt(todayDate.getTime() / 86400000) * 86400000 + 54000000);
+	if ( todayDate > new Date() )
+	{
+	expiredays = expiredays - 1;
+	}
+	todayDate.setDate( todayDate.getDate() + expiredays ); 
+	 document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+  }
+  
+</script>
+
+<div id="ct">
+	<section>
+		<div class="s_t">
+            <a href="e.html" class="customBackButton">ì´ì </a>
+			<h2 class="t">
+				<img src="title.png" width="197px" />
+			</h2>
+		</div>
+	</section>
+
+	<div id="showLayer" style="position:absolute;left:0px;right:0px;display:none;z-index:999;color:#517caf;">
+		<div class="in" style="position:relative;background:#fff;width:90%;margin:auto;border-radius:.5em .5em;border:1px solid #BABABA;padding:10px;text-align:justify;">
+			<p >
+			<strong>ë¯¸íë¦° ì</strong> : ê°ì¥ ìµê·¼(1990ë) ë±ì¥í ìì¼ë¡ í ìì ë¹í´ ì¤ì°¨ê° ì ì´ ìµê·¼ BMR ê³ì°ìì¼ë¡ ë§ì´ ì¬ì©íë ì¶ì¸ì´ë¤.  
+			</p>	
+			<p style="margin-top:20px;">
+			<strong>í¤ë¦¬ì¤-ë² ë¤ëí¸ì</strong> : 1919ë ì´í ìì­ëê° ì¬ì©ëì´ì¨ ì íµì BMR(í´ìê¸°ì´ëì¬ì¨)êµ¬íë ì. ì´ë¦¬ê±°ë ëì´ë¤ê±°ë ë¹ë§íì´ë¤ì íµê³ì ë¶ì í©íê³  5% ì ë ìëì§ë¥¼ ê³¼ëíê°íë ê²½í¥ì´ ìë¤.
+			</p>
+			<p style="text-align:center;margin-top:10px;">
+				<a style="display:inline-block;width:100px;height:30px;line-height:30px;background:#517caf;color:#fff;text-align:center;border-radius:.5em .5em;border:0 none;font-size:15px;font-weight:bold;" href="javascript:;">ë« ê¸°</a>
+			</p>
+		</div>
+	</div>
+	
+	<div id="showLayer1" style="position:absolute;left:0px;right:0px;display:none;z-index:999;color:#517caf;">
+		<div class="in" style="position:relative;background:#fff;width:90%;margin:auto;border-radius:.5em .5em;border:1px solid #BABABA;padding:10px;text-align:justify;">
+			<p >
+				ë¤ì´ì´í¸ì ì¼ ìµìì­ì·¨ì¹¼ë¡ë¦¬ë ê¸°ì´ëì¬ë ì´ìì ê¶ì¥í©ëë¤. <br/>ê·¸ ì´íë¡ ì­ì·¨íë ê²ì ì´ì ì´ëë¤ì´ì´í¸ë¡ ê·¼ìì¤ ë± ëª¸ì ë¬´ë¦¬ê° ê° ì ììµëë¤. <br/>ê²°ê³¼ì ì´ëìê°ì´ ê³¼íê±°ë ì­ì·¨ì¹¼ë¡ë¦¬ê° ëë¬´ ì ì ê²½ì°ë ê°ëëª©í ë° ê¸°ê°ì´ ë¬´ë¦¬ë¼ë ê²ì ìë¯¸í©ëë¤. <br/>í ë¬ 2~4kg ê°ëì ëª©íë¡ ì°¨ê·¼ì°¨ê·¼ ë¤ì´ì´í¸íì¸ì.^^  <br/><strong>- ìë¬ì¤.</strong>
+			</p>	
+			
+			<p style="text-align:center;margin-top:10px;">
+				<a style="display:inline-block;width:100px;height:30px;line-height:30px;background:#517caf;color:#fff;text-align:center;border-radius:.5em .5em;border:0 none;font-size:15px;font-weight:bold;" href="javascript:;">ë« ê¸°</a>
+			</p>
+		</div>
+	</div>
+	
+	<div id="content">
+        
+    </div>
+    
+    
+</div>
+<footer style="font-size:11px;text-align:center;padding-top:5px;background:#F8F8F8;">
+    COPYRIGHT 2013 Â© <span style="color:#517caf;font-weight:bold;">VITASHOP</span> ALL RIGHTS RESERVED
+</footer>
+<style>
+.sns{padding-top:5px;overflow:hidden;}
+.sns li{float:left;width:20%;text-align:center;}
+</style>
+<div>
+	<ul class="sns">
+		<li><a href="javascript:;" onclick="sendSns(1);return false;">
+		<img src="http://bignus.cafe24.com/vitashop/images/icon_katalk.png" alt="ì¹´ì¹´ì¤í¡" width="50" height="50" />
+		</a></li>
+		<li><a href="javascript:;" onclick="sendSns(2);return false;">
+		<img src="http://bignus.cafe24.com/vitashop/images/icon_kastory.png" alt="ì¹´ì¹´ì¤ì¤í ë¦¬" width="50" height="50" />
+		</a></li>
+		<li><a href="javascript:;" onclick="sendSns(3);return false;">
+		<img src="http://bignus.cafe24.com/vitashop/images/icon_tweeter.png" alt="í¸ìí°" width="50" height="50" />
+		</a></li>
+		<li><a href="javascript:;" onclick="sendSns(4);return false;">
+		<img src="http://bignus.cafe24.com/vitashop/images/icon_facebook.png" alt="íì´ì¤ë¶" width="50" height="50" />
+		</a></li>
+		<li><a href="javascript:;" onclick="sendSns(5);return false;">
+		<img src="http://bignus.cafe24.com/vitashop/images/icon_me2day.png" alt="ë¯¸í¬ë°ì´" width="50" height="50" />
+		</a></li>
+	</ul>
+	<p style="text-align:center;padding-top:5px;padding-bottom:5px;">-ì¹êµ¬ë¤ê³¼ ë¤ì´ì´í¸ê³ì°ê¸°ë¥¼ ê³µì íì¸ì-</p>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=453779761385872";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like-box" data-href="https://www.facebook.com/diettalk" data-width="100%" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false"></div>
+
+<script>
+
+function sendSns(index){
+	
+	var _text = '"ëì ë¹ë§ë, íì¤ì²´ì¤, ê¸°ì´ëì¬ì¨, ì¼íìì¹¼ë¡ë¦¬ë? ëª©íë¬ì±ì ìí´ ë§¤ì¼ ì¼ë§ë ë¨¹ê³  ì´ë¤ ì´ëì ì¼ë§ë í´ì¼í ê¹?" http://nalthin.com/cal/e.html';
+	
+	if(index==1){
+		executeURLLink();
+	} else if (index==2) {
+		executeKakaoStoryLink();
+	} else if (index==3) {
+		window.open("https://twitter.com/intent/tweet?original_referer=http://www.nalthin.com/cal/e.html&url=http://www.nalthin.com/cal/e.html&text="+_text);
+	} else if (index==4) {
+		window.open("https://m.facebook.com/sharer.php?u=http://nalthin.com/cal/e.html&t="+_text);
+	} else if (index==5) {
+		window.open("http://plugin.me2day.net/v1/me2post/create_post_form.nhn?is_mobile=true&tag=dietbible&body="+_text);
+	}
+	
+	//https://twitter.com/intent/tweet?original_referer=http://www.nalthin.com/cal/e.html&text=%5Bë¤ì´ë²%5D+ì¤í¬ì¸ +%3A+%5Bíêµ­íë¡ì¼êµ¬+ëí¬ì¬%5D%288%29+2ì°¨+í¸ì¸ì+ëâ¦í¸ì¸%2C+ë°°ìì+ë¹ë³¼ì+ì+ëì +ì£¼ë¨¹ì§&url=http://www.nalthin.com/cal/e.html
+	//http://plugin.me2day.net/v1/me2post/create_post_form.nhn?is_mobile=true&body=ëìë²í¸&tag=dietbible
+	//https://m.facebook.com/sharer.php?u=http://www.nalthin.com/cal/e.html&t=test
+}
+
+function executeURLLink()
+{
+	var _text = '"ëì ë¹ë§ë, íì¤ì²´ì¤, ê¸°ì´ëì¬ì¨, ì¼íìì¹¼ë¡ë¦¬ë? ëª©íë¬ì±ì ìí´ ë§¤ì¼ ì¼ë§ë ë¨¹ê³  ì´ë¤ ì´ëì ì¼ë§ë í´ì¼í ê¹?"';
+    kakao.link("talk").send({
+        msg : '"ëì ë¹ë§ë, íì¤ì²´ì¤, ê¸°ì´ëì¬ì¨, ì¼íìì¹¼ë¡ë¦¬ë? ëª©íë¬ì±ì ìí´ ë§¤ì¼ ì¼ë§ë ë¨¹ê³  ì´ë¤ ì´ëì ì¼ë§ë í´ì¼í ê¹?" http://nalthin.com/cal/e.html',
+        url : "http://nalthin.com/cal/e.html",
+        appid : "http://nalthin.com/cal/e.html",
+        appver : "2.0",
+        appname : "ë¤ì´ì´í¸ê³ì°ê¸°",
+        type : "link"
+    });
+
+}
+
+function executeKakaoStoryLink()
+{
+	var _text = '"ëì ë¹ë§ë, íì¤ì²´ì¤, ê¸°ì´ëì¬ì¨, ì¼íìì¹¼ë¡ë¦¬ë? ëª©íë¬ì±ì ìí´ ë§¤ì¼ ì¼ë§ë ë¨¹ê³  ì´ë¤ ì´ëì ì¼ë§ë í´ì¼í ê¹?" http://nalthin.com/cal/e.html';
+    kakao.link("story").send({   
+        post : _text,
+        appid : "http://nalthin.com/cal/e.html",
+        appver : "1.0",
+        appname : "ë¤ì´ì´í¸ê³ì°ê¸°",
+        urlinfo : JSON.stringify({title:"ë¤ì´ì´í¸ê³ì°ê¸°", desc:_text, imageurl:["http://bignus.cafe24.com/vitashop/2013/banner_calculator.gif"], type:"article"})
+    });
+}
+
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    // Hide the address bar!
+    window.scrollTo(0, 1);
+  }, 0);
+ }, false);
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39065049-1']);
+  _gaq.push(['_setDomainName', 'nalthin.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>
